@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: d7ab686bb628d6740a6546f770484a6e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -414121924293204779
+    second: isometricTrees_green_0
+  - first:
+      213: 7590742651228806928
+    second: isometricTrees_green_1
+  - first:
+      213: 6278010331420849705
+    second: isometricTrees_green_2
+  - first:
+      213: -7969145216258823948
+    second: isometricTrees_green_3
+  - first:
+      213: 7538229056120141929
+    second: isometricTrees_green_4
+  - first:
+      213: 7627728619954193977
+    second: isometricTrees_green_5
+  - first:
+      213: 858036951959491377
+    second: isometricTrees_green_6
+  - first:
+      213: -7112522913991277570
+    second: isometricTrees_green_7
+  - first:
+      213: -3416694689127541389
+    second: isometricTrees_green_8
+  - first:
+      213: 909166142318220012
+    second: isometricTrees_green_9
+  - first:
+      213: -722094851294816046
+    second: isometricTrees_green_10
+  - first:
+      213: -7776263139302072693
+    second: isometricTrees_green_11
+  - first:
+      213: 5888761301261262996
+    second: isometricTrees_green_12
+  - first:
+      213: 1276451194617475355
+    second: isometricTrees_green_13
+  - first:
+      213: 4731603580870583122
+    second: isometricTrees_green_14
+  - first:
+      213: -6330125595254536269
+    second: isometricTrees_green_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: isometricTrees_green_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1577
+        width: 453
+        height: 394
+      alignment: 9
+      pivot: {x: 0.4257282, y: 0.2913022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a956ffb83c75147906c10f52d643bc
+      internalID: -414121924293204779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_1
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 1556
+        width: 428
+        height: 419
+      alignment: 9
+      pivot: {x: 0.26984826, y: 0.32090247}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd2406b3758beb499a2a0eafec09cb7
+      internalID: 7590742651228806928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_2
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 1559
+        width: 459
+        height: 464
+      alignment: 9
+      pivot: {x: 0.3167831, y: 0.31356996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721aa68b6d4ad6c4b91e06b17189190e
+      internalID: 6278010331420849705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_3
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 1584
+        width: 492
+        height: 444
+      alignment: 9
+      pivot: {x: 0.3267579, y: 0.29566035}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f23a061c5142842956ea2ccc11501d
+      internalID: -7969145216258823948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1065
+        width: 453
+        height: 394
+      alignment: 9
+      pivot: {x: 0.4257282, y: 0.29130253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1694b10c6d59ff41b0e00ceac77b7d0
+      internalID: 7538229056120141929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_5
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 1044
+        width: 428
+        height: 419
+      alignment: 9
+      pivot: {x: 0.27875397, y: 0.32090247}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a70b805e00f9e4c83b90cdb4587c5f
+      internalID: 7627728619954193977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_6
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 1047
+        width: 459
+        height: 464
+      alignment: 9
+      pivot: {x: 0.35000005, y: 0.3053552}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff7796a121836f4682d1a0764447995
+      internalID: 858036951959491377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_7
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 1072
+        width: 492
+        height: 444
+      alignment: 9
+      pivot: {x: 0.3422524, y: 0.2613212}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe944b38a2f09648839ed9c491b39fc
+      internalID: -7112522913991277570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 553
+        width: 453
+        height: 394
+      alignment: 9
+      pivot: {x: 0.43414247, y: 0.29130253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b61ad0cc22e266344b9e9d7d2c39b073
+      internalID: -3416694689127541389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_9
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 532
+        width: 428
+        height: 419
+      alignment: 9
+      pivot: {x: 0.28765967, y: 0.32090262}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10bc32349db4b8e43ae7be6f260fa009
+      internalID: 909166142318220012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_10
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 535
+        width: 459
+        height: 464
+      alignment: 9
+      pivot: {x: 0.33339158, y: 0.32999972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949716bbd35692940bf260d339bab72c
+      internalID: -722094851294816046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_11
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 560
+        width: 492
+        height: 444
+      alignment: 9
+      pivot: {x: 0.3422524, y: 0.26990598}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d57a16ec99a36d14e9f537b33e358f1d
+      internalID: -7776263139302072693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 41
+        width: 453
+        height: 427
+      alignment: 9
+      pivot: {x: 0.45097092, y: 0.25858712}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88498e57336e4db499bdcde6c962dc9f
+      internalID: 5888761301261262996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_13
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 20
+        width: 453
+        height: 419
+      alignment: 9
+      pivot: {x: 0.30792868, y: 0.3481939}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d283f811be64145a8534209e19037d
+      internalID: 1276451194617475355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_14
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 23
+        width: 459
+        height: 464
+      alignment: 9
+      pivot: {x: 0.35000005, y: 0.3135701}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f826f93d7167c74f8acf17f0c4611d8
+      internalID: 4731603580870583122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometricTrees_green_15
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 48
+        width: 492
+        height: 444
+      alignment: 9
+      pivot: {x: 0.33450517, y: 0.28707588}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba1b31261cab6914685611aed049accd
+      internalID: -6330125595254536269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
