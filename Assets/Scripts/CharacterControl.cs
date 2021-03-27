@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
 {
-    
+    //Stats
     public float speed = 3; 
     public int maxHealth = 5;
 
     public int getHealth { get { return currentHealth; } }
     int currentHealth;
 
+    //Attack stats
+    public Transform Attack1;
+    public float Attack1Radius;
     Rigidbody2D rigidbody2d;
-
+    
     float horizontal;
     float vertical;
     void Start()
