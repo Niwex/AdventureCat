@@ -13,6 +13,13 @@ public abstract class MonstersScript : MonoBehaviour
 
     float followRadius;
 
+    public enum State
+    {
+        IDLE,
+        ATTACK,
+        FOLLOW,
+        BLOCK
+    }
     public void Attack()
     {
         //atack animation
@@ -40,11 +47,33 @@ public abstract class MonstersScript : MonoBehaviour
 
     }
 
-    public void MoveToPlayer(float derectionX, float DerectionY)
+    public void ChooseTheWay(Transform playerTransform)
     {
-        transform.position += new Vector3(derectionX*getMoveSpeed() * Time.deltaTime,DerectionY * getMoveSpeed() * Time.deltaTime, 0f);
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
+
+    }
+    public void MoveToPlayer(Transform playerTransform)
+    {
+        float distCovered = Time.deltaTime * moveSpeed;
+        float distBetweenMonsterAndPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        if (distBetweenMonsterAndPlayer <= followRadius)
+        {
+            transform.position = Vector3.Lerp(transform.position, playerTransform.position, distCovered / distBetweenMonsterAndPlayer);
+            Debug.Log("FOLLOW");
+        }
     }
 
+    public void setState()
+    {
+
+    }
     public void setMoveSpeed(float speed)
     {
         moveSpeed = speed;

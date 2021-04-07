@@ -36,103 +36,25 @@ public class SkeletonController : MonstersScript
     // Update is called once per frame
     void Update()
     {
-        if (checkFollowRadius(playerTransform.position.x, transform.position.x))
+        
+
+        State state = State.FOLLOW;
+        MoveToPlayer(playerTransform);
+        
+        switch (state)
         {
-            //if player in front of the enemies
-            if (playerTransform.position.y < transform.position.y)
-            {
-
-                if (checkAttackRadius(playerTransform.position.x, transform.position.x))
-                {
-                    //for attack animation
-                    //enemyAnim.SetBool("AttackA", true);
-                    enemyAnim.SetTrigger("AttackA");
-                }
-                else
-                {
-                    MoveToPlayer(0, -1);
-                    //for attack animation
-                    //enemyAnim.SetBool("AttackA", false);
-                    //walk
-                    //enemyAnim.SetBool("Walking", true);
-                    enemyAnim.SetTrigger("Walking");
-                    enemySR.flipX = true;
-                }
-
-            }
-            //if player is behind enemies
-            else if (playerTransform.position.y > transform.position.y)
-            {
-                if (checkAttackRadius(playerTransform.position.x, transform.position.x))
-                {
-                    //for attack animation
-                    //nemyAnim.SetBool("AttackA", true);
-                    enemyAnim.SetTrigger("AttackA");
-                }
-                else
-                {
-                    MoveToPlayer(0, 1);
-                    
-                    //for attack animation
-                    //enemyAnim.SetBool("AttackA", false);
-                    //walk
-                    //enemyAnim.SetBool("Walking", true);
-                    enemyAnim.SetTrigger("Walking");
-                    enemySR.flipX = false;
-                }
-
-
-            }
-            else if (playerTransform.position.x > transform.position.x)
-            {
-                if (checkAttackRadius(playerTransform.position.x, transform.position.x))
-                {
-                    //for attack animation
-                    //nemyAnim.SetBool("AttackA", true);
-                    enemyAnim.SetTrigger("AttackA");
-                }
-                else
-                {
-                    MoveToPlayer(-1, 0);
-
-                    //for attack animation
-                    //enemyAnim.SetBool("AttackA", false);
-                    //walk
-                    //enemyAnim.SetBool("Walking", true);
-                    enemyAnim.SetTrigger("Walking");
-                    enemySR.flipX = false;
-                }
-
-
-            }
-            else if (playerTransform.position.x > transform.position.x)
-            {
-                if (checkAttackRadius(playerTransform.position.x, transform.position.x))
-                {
-                    //for attack animation
-                    //nemyAnim.SetBool("AttackA", true);
-                    enemyAnim.SetTrigger("AttackA");
-                }
-                else
-                {
-                    MoveToPlayer(1, 0);
-
-                    //for attack animation
-                    //enemyAnim.SetBool("AttackA", false);
-                    //walk
-                    //enemyAnim.SetBool("Walking", true);
-                    enemyAnim.SetTrigger("Walking");
-                    enemySR.flipX = false;
-                }
-
-
-            }
+            case State.IDLE:
+                break;
+            case State.ATTACK:
+                break;
+            case State.FOLLOW:
+                
+                MoveToPlayer(playerTransform);
+                break;
+            case State.BLOCK:
+                break;
         }
-        else
-        {
-            enemyAnim.SetBool("Walking", false);
-        }
-
+        
 
     }
     void OnDrawGizmosSelected()
