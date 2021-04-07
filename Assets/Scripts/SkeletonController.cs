@@ -8,18 +8,22 @@ public class SkeletonController : MonstersScript
 
     public float _moveSpeed;
     public int _attackDamage;
+    public float _attackRate;
     public int _maxHealth;
     public float _attackRadius;
 
+    float nextAttackTime = 0f;
     //movement
     public float _followRadius;
     //end
+    [SerializeField] CircleCollider2D weaponCollider;
     [SerializeField] Transform playerTransform;
     [SerializeField] Animator enemyAnim;
     SpriteRenderer enemySR;
 
     void Start()
     {
+       
         //get the player transform   
         playerTransform = FindObjectOfType<CharacterControl>().GetComponent<Transform>();
         //enemy animation and sprite renderer 
@@ -28,6 +32,7 @@ public class SkeletonController : MonstersScript
         //set the variables
         setMoveSpeed(_moveSpeed);
         setAttackDamage(_attackDamage);
+        setAttackRate(_attackRate);
         setAttackRadius(_attackRadius);
         setFollowRadius(_followRadius);
         currentHealth = maxHealth;
@@ -36,21 +41,35 @@ public class SkeletonController : MonstersScript
     // Update is called once per frame
     void Update()
     {
-        
 
-        State state = State.FOLLOW;
-        MoveToPlayer(playerTransform);
+        
+        State state = setState(playerTransform);
+        
         
         switch (state)
         {
             case State.IDLE:
+                enemyAnim.SetTrigger("iddle");
+                //Debug.Log("IDDLE");
                 break;
+
             case State.ATTACK:
+                if(Time.time >=nextAttackTime)
+                {
+                    enemyAnim.SetTrigger("attack");
+                    nextAttackTime = Time.time + 1f / getAttackRate();
+                    //Debug.Log("ATTACK");
+                }
                 break;
+
             case State.FOLLOW:
-                
                 MoveToPlayer(playerTransform);
+                if (playerTransform.position.x < transform.position.x) enemyAnim.SetFloat("Move X", -1);
+                else enemyAnim.SetFloat("Move X", 1);
+                enemyAnim.SetTrigger("walking");
+                //Debug.Log("FOLLOW");
                 break;
+
             case State.BLOCK:
                 break;
         }
@@ -60,9 +79,13 @@ public class SkeletonController : MonstersScript
     void OnDrawGizmosSelected()
     {
         //if (attackPoint == null)
-            //return;
-        Gizmos.DrawWireSphere(transform.position, _attackRadius);
+        //return;
+        Vector3 position = transform.position;
+        position.y += 0.6f;
+        Gizmos.DrawWireSphere(position, _attackRadius);
         Gizmos.DrawWireSphere(transform.position, _followRadius);
 
     }
+
+    
 }

@@ -15,7 +15,7 @@ public class FlyingEyeController : MonstersScript
     void Update()
     {
         FlyingEyeController A = new FlyingEyeController();
-        A.Attack();
+        
     }
     
     

@@ -59,7 +59,7 @@ public class CharacterControl : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-
+        Debug.Log("health  " + currentHealth);
     }
 
     public void Attack()

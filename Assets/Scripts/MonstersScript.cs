@@ -9,6 +9,7 @@ public abstract class MonstersScript : MonoBehaviour
 
     float moveSpeed;
     int attackDmg;
+    float attackRate;
     float attackRadius;
 
     float followRadius;
@@ -18,9 +19,11 @@ public abstract class MonstersScript : MonoBehaviour
         IDLE,
         ATTACK,
         FOLLOW,
-        BLOCK
+        BLOCK,
+        GETHIT,
+        DIE
     }
-    public void Attack()
+    public void Attack(CircleCollider2D weaponCollider)
     {
         //atack animation
 
@@ -47,18 +50,6 @@ public abstract class MonstersScript : MonoBehaviour
 
     }
 
-    public void ChooseTheWay(Transform playerTransform)
-    {
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-        if (playerTransform.position.y < transform.position.y && playerTransform.position.x < transform.position.x) return;
-
-    }
     public void MoveToPlayer(Transform playerTransform)
     {
         float distCovered = Time.deltaTime * moveSpeed;
@@ -66,13 +57,19 @@ public abstract class MonstersScript : MonoBehaviour
         if (distBetweenMonsterAndPlayer <= followRadius)
         {
             transform.position = Vector3.Lerp(transform.position, playerTransform.position, distCovered / distBetweenMonsterAndPlayer);
-            Debug.Log("FOLLOW");
+            
         }
     }
 
-    public void setState()
+    public State setState(Transform playerTransform)
     {
-
+        if (checkAttackRadius(playerTransform))
+        {
+            return State.ATTACK;
+        }
+        if (checkFollowRadius(playerTransform))
+            return State.FOLLOW;
+        else return State.IDLE;
     }
     public void setMoveSpeed(float speed)
     {
@@ -82,6 +79,10 @@ public abstract class MonstersScript : MonoBehaviour
     {
         attackDmg = attdmg;
     }
+    public void setAttackRate(float attRate)
+    {
+        attackRate = attRate;
+    }
     public float getMoveSpeed()
     {
         return moveSpeed;
@@ -89,6 +90,10 @@ public abstract class MonstersScript : MonoBehaviour
     public int getAttackDamage()
     {
         return attackDmg;
+    }
+    public float getAttackRate()
+    {
+        return attackRate;
     }
 
     //movement toward a player
@@ -103,9 +108,11 @@ public abstract class MonstersScript : MonoBehaviour
     }
 
     //if player in radius move toward him 
-    public bool checkFollowRadius(float playerPosition, float enemyPosition)
+    public bool checkFollowRadius(Transform playerTransform)
     {
-        if (Mathf.Abs(playerPosition - enemyPosition) < followRadius)
+        Vector3 position = transform.position;
+        
+        if (Vector3.Distance(position, playerTransform.position) <= followRadius)
         {
             //player in range
             return true;
@@ -117,9 +124,11 @@ public abstract class MonstersScript : MonoBehaviour
     }
 
     //if player in radius attack him
-    public bool checkAttackRadius(float playerPosition, float enemyPosition)
+    public bool checkAttackRadius( Transform playerTransform)
     {
-        if (Mathf.Abs(playerPosition - enemyPosition) < attackRadius)
+        Vector3 position = transform.position;
+        position.y += 0.6f;
+        if (Vector3.Distance(position, playerTransform.position) < attackRadius)
         {
             //in range for attack
             return true;
