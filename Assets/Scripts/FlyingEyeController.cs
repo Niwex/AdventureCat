@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEyeController : MonoBehaviour
+
+public class FlyingEyeController : MonstersScript
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,9 @@ public class FlyingEyeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        FlyingEyeController A = new FlyingEyeController();
+        A.Attack();
     }
+    
+    
 }
