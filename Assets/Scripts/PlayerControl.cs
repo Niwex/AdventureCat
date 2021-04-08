@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
   //Stats
-  public GameObject fireBall;
-
   public float speed = 3;
   public int maxHealth = 6;
   public float attackDmg = 20;
@@ -33,34 +31,12 @@ public class PlayerControl : MonoBehaviour
     currentHealth = 3;
   }
 
-  void FireAttack()
-  {
-    int fireBallNumber = 5;
-    float fireBallStartRadius = 4f;
-    for (int i = 0; i < fireBallNumber; i++)
-    {
-      Debug.Log("here");
-      // float angle = piMultiplier * Mathf.PI;
 
-
-      float x = fireBallStartRadius;
-      Vector3 pos = transform.position + new Vector3(fireBallStartRadius, fireBallStartRadius);
-      // float angleDegrees = -angle * Mathf.Rad2Deg;
-      Quaternion rot = Quaternion.Euler(i * 45, 0, 0);
-      Instantiate(fireBall, pos, rot);
-    }
-  }
   void Update()
   {
 
     horizontal = Input.GetAxis("Horizontal");
     vertical = Input.GetAxis("Vertical");
-    if (Input.GetKeyDown(KeyCode.Mouse0))
-    {
-      FireAttack();
-      // int piMultiplier = 1;
-
-    }
     if (Time.time >= nextAttackTime)
     {
       if (Input.GetKeyDown(KeyCode.Space))

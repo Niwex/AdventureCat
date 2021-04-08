@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7509950461281618310}
   - component: {fileID: 7509950461281618311}
-  - component: {fileID: 7509950461281618308}
   - component: {fileID: 7509950461281618309}
+  - component: {fileID: 2411551440611622573}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Spell
@@ -84,20 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7509950461281618308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7509950461281618306}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca749d681d2d6244d97bec2d000da678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwSpeed: 5
-  damage: 5
 --- !u!58 &7509950461281618309
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -114,3 +100,24 @@ CircleCollider2D:
   m_Offset: {x: 0.019455766, y: 0.00972786}
   serializedVersion: 2
   m_Radius: 0.106485225
+--- !u!50 &2411551440611622573
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509950461281618306}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
