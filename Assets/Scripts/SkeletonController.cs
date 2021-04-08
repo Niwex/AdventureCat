@@ -12,7 +12,7 @@ public class SkeletonController : MonstersScript
     public int _maxHealth;
     public float _attackRadius;
 
-    float nextAttackTime = 0f;
+    public float _nextAttackTime = 0f;
     //movement
     public float _followRadius;
     //end
@@ -35,6 +35,7 @@ public class SkeletonController : MonstersScript
         setAttackRate(_attackRate);
         setAttackRadius(_attackRadius);
         setFollowRadius(_followRadius);
+        setNextAttackTime(_nextAttackTime);
         currentHealth = maxHealth;
     }
 
@@ -54,10 +55,12 @@ public class SkeletonController : MonstersScript
                 break;
 
             case State.ATTACK:
-                if(Time.time >=nextAttackTime)
+                if(Time.time >=getNextAttackTime())
                 {
                     enemyAnim.SetTrigger("attack");
-                    nextAttackTime = Time.time + 1f / getAttackRate();
+                    //Attack func
+
+                    setNextAttackTime(Time.time + 1f / getAttackRate());
                     //Debug.Log("ATTACK");
                 }
                 break;

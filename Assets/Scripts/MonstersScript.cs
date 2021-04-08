@@ -13,7 +13,7 @@ public abstract class MonstersScript : MonoBehaviour
     float attackRadius;
 
     float followRadius;
-
+    float nextAttackTime = 0f;
     public enum State
     {
         IDLE,
@@ -65,7 +65,11 @@ public abstract class MonstersScript : MonoBehaviour
     {
         if (checkAttackRadius(playerTransform))
         {
-            return State.ATTACK;
+            if (Time.time >= nextAttackTime)
+            {
+                return State.ATTACK;
+            }
+            else return State.IDLE;
         }
         if (checkFollowRadius(playerTransform))
             return State.FOLLOW;
@@ -95,6 +99,10 @@ public abstract class MonstersScript : MonoBehaviour
     {
         return attackRate;
     }
+    public float getNextAttackTime()
+    {
+        return nextAttackTime;
+    }
 
     //movement toward a player
     public void setFollowRadius(float r)
@@ -105,6 +113,10 @@ public abstract class MonstersScript : MonoBehaviour
     public void setAttackRadius(float r)
     {
         attackRadius = r;
+    }
+    public void setNextAttackTime(float n)
+    {
+        nextAttackTime = n;
     }
 
     //if player in radius move toward him 
