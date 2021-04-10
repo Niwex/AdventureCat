@@ -47,13 +47,11 @@ public abstract class MonstersScript : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("die!" );
-        float timer = Time.time;
-        float time = timer + 2000000000000000;
-        if (timer > time)
-        {
-            Destroy(gameObject);
-        }
+        
+        
+        
+        
+        Destroy(gameObject);
     }
 
     public void MoveToPlayer(Transform playerTransform)

@@ -5,18 +5,91 @@ using UnityEngine;
 
 public class FlyingEyeController : MonstersScript
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public float _moveSpeed;
+    public int _attackDamage;
+    public float _attackRate;
+    public int _maxHealth;
+    public float _attackRadius;
+
+    public float _nextAttackTime = 0f;
+    //movement
+    public float _followRadius;
+    //end
+    [SerializeField] CircleCollider2D weaponCollider;
+    [SerializeField] Transform playerTransform;
+    [SerializeField] Animator enemyAnim;
+    SpriteRenderer enemySR;
+    private void Start()
     {
-        
+        //get the player transform   
+        playerTransform = FindObjectOfType<CharacterControl>().GetComponent<Transform>();
+        //enemy animation and sprite renderer 
+        enemyAnim = gameObject.GetComponent<Animator>();
+        enemySR = GetComponent<SpriteRenderer>();
+        //set the variables
+        setMoveSpeed(_moveSpeed);
+        setAttackDamage(_attackDamage);
+        setAttackRate(_attackRate);
+        setAttackRadius(_attackRadius);
+        setFollowRadius(_followRadius);
+        setNextAttackTime(_nextAttackTime);
+        HealthLastFrame = maxHealth;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        FlyingEyeController A = new FlyingEyeController();
-        
+
+
+        State state = setState(playerTransform);
+
+
+        switch (state)
+        {
+            case State.IDLE:
+                enemyAnim.SetTrigger("idle");
+                //Debug.Log("IDDLE");
+                break;
+
+            case State.ATTACK:
+                if (Time.time >= getNextAttackTime())
+                {
+                    enemyAnim.SetTrigger("attack");
+                    //Attack func
+                    Attack(FindObjectOfType<CharacterControl>());
+                    setNextAttackTime(Time.time + 1f / getAttackRate());
+                    //Debug.Log("ATTACK");
+
+                }
+                break;
+
+            case State.FOLLOW:
+                MoveToPlayer(playerTransform);
+                if (playerTransform.position.x < transform.position.x) 
+                    enemyAnim.SetFloat("Move X", -1);
+
+                else enemyAnim.SetFloat("Move X", 1);
+                enemyAnim.SetTrigger("walking");
+                //Debug.Log("FOLLOW");
+                break;
+
+            case State.BLOCK:
+                break;
+
+            case State.GETHIT:
+                enemyAnim.SetTrigger("getHit");
+                break;
+            case State.DIE:
+                enemyAnim.SetTrigger("die");
+
+                Die();
+                break;
+        }
+
+        HealthLastFrame = currentHealth;
     }
-    
-    
+
+
 }
