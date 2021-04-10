@@ -229,11 +229,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   maxHealth: 5
+  attackDmg: 20
+  attackRate: 2
   attackPoint: {fileID: 4781453254924691793}
   attackRadius: 0.7
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
+  animator: {fileID: 1761698111}
 --- !u!95 &1761698111
 Animator:
   serializedVersion: 3
@@ -244,7 +247,7 @@ Animator:
   m_GameObject: {fileID: 5992461122518025855}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2c793e083d54e4d408e6cbb1ed5e2368, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3e0edd2bd89e70846a867e073d667589, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
