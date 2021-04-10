@@ -88,4 +88,14 @@ public class MushroomController : MonstersScript
 
         HealthLastFrame = currentHealth;
     }
+    void OnDrawGizmosSelected()
+    {
+        //if (attackPoint == null)
+        //return;
+        Vector3 position = transform.position;
+        position.y += 0.6f;
+        Gizmos.DrawWireSphere(position, _attackRadius);
+        Gizmos.DrawWireSphere(transform.position, _followRadius);
+
+    }
 }
