@@ -6,7 +6,7 @@ public class CharacterControl : MonoBehaviour
 {
     //Stats
     public float speed = 3;
-    public int maxHealth = 5;
+    public int maxHealth;
     public float attackDmg = 20;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
@@ -28,7 +28,7 @@ public class CharacterControl : MonoBehaviour
 
 
         attackRadius = 1.17f;
-        currentHealth = 3;
+        currentHealth = maxHealth/2;
     }
 
 
@@ -72,6 +72,7 @@ public class CharacterControl : MonoBehaviour
         {
             Debug.Log("Hit " + enemy);
             enemy.GetComponent<MonstersScript>().getHit(attackDmg);
+            
         }
     }
 

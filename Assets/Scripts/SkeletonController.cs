@@ -36,6 +36,7 @@ public class SkeletonController : MonstersScript
         setAttackRadius(_attackRadius);
         setFollowRadius(_followRadius);
         setNextAttackTime(_nextAttackTime);
+        HealthLastFrame = maxHealth;
         currentHealth = maxHealth;
     }
 
@@ -59,9 +60,10 @@ public class SkeletonController : MonstersScript
                 {
                     enemyAnim.SetTrigger("attack");
                     //Attack func
-
+                    Attack(FindObjectOfType<CharacterControl>());
                     setNextAttackTime(Time.time + 1f / getAttackRate());
                     //Debug.Log("ATTACK");
+                    
                 }
                 break;
 
@@ -75,9 +77,18 @@ public class SkeletonController : MonstersScript
 
             case State.BLOCK:
                 break;
-        }
-        
 
+            case State.GETHIT:
+                enemyAnim.SetTrigger("getHit");
+                break;
+            case State.DIE:
+                enemyAnim.SetTrigger("die");
+                
+                Die();
+                break;
+        }
+
+     HealthLastFrame = currentHealth;
     }
     void OnDrawGizmosSelected()
     {

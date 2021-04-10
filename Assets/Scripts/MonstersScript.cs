@@ -4,14 +4,13 @@ using UnityEngine;
 
 public abstract class MonstersScript : MonoBehaviour
 {
+    public float HealthLastFrame;
     public float maxHealth = 100;
     protected float currentHealth;
-
     float moveSpeed;
     int attackDmg;
     float attackRate;
     float attackRadius;
-
     float followRadius;
     float nextAttackTime = 0f;
     public enum State
@@ -23,18 +22,23 @@ public abstract class MonstersScript : MonoBehaviour
         GETHIT,
         DIE
     }
-    public void Attack(CircleCollider2D weaponCollider)
+    public void Attack(CharacterControl player)
     {
-        //atack animation
+        
 
-        //attack 
+        //attack
+        if (player.getHealth > 0)
+        {
+            player.ChangeHealth(-attackDmg);
+            Debug.Log(this.gameObject + " Attacked "+player.gameObject+" and dealed "+ attackDmg + "dmg");
+            Debug.Log(player.gameObject +":Health left"+player.getHealth);
+        }
     }
 
     public void getHit(float dmg)
     {
         currentHealth -= dmg;
 
-        //hurt anim
 
         //Die 
         if (currentHealth <= 0)
@@ -44,10 +48,12 @@ public abstract class MonstersScript : MonoBehaviour
     public void Die()
     {
         Debug.Log("die!" );
-
-        //die anim
-
-
+        float timer = Time.time;
+        float time = timer + 2000000000000000;
+        if (timer > time)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void MoveToPlayer(Transform playerTransform)
@@ -63,16 +69,22 @@ public abstract class MonstersScript : MonoBehaviour
 
     public State setState(Transform playerTransform)
     {
+        if(HealthLastFrame - currentHealth != 0)
+            return State.GETHIT;
+        
+        if (currentHealth <= 0) 
+            return State.DIE;
+        
         if (checkAttackRadius(playerTransform))
         {
             if (Time.time >= nextAttackTime)
-            {
                 return State.ATTACK;
-            }
+
             else return State.IDLE;
         }
         if (checkFollowRadius(playerTransform))
             return State.FOLLOW;
+
         else return State.IDLE;
     }
     public void setMoveSpeed(float speed)
