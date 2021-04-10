@@ -34,8 +34,8 @@ public class FlyingEyeController : MonstersScript
         setAttackRadius(_attackRadius);
         setFollowRadius(_followRadius);
         setNextAttackTime(_nextAttackTime);
-        HealthLastFrame = maxHealth;
-        currentHealth = maxHealth;
+        HealthLastFrame = _maxHealth;
+        currentHealth = _maxHealth;
     }
 
     // Update is called once per frame

@@ -36,8 +36,8 @@ public class GoblinController : MonstersScript
         setAttackRadius(_attackRadius);
         setFollowRadius(_followRadius);
         setNextAttackTime(_nextAttackTime);
-        HealthLastFrame = maxHealth;
-        currentHealth = maxHealth;
+        HealthLastFrame = _maxHealth;
+        currentHealth = _maxHealth;
     }
 
     void Update()

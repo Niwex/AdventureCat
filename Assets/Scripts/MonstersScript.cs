@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class MonstersScript : MonoBehaviour
 {
     public float HealthLastFrame;
-    public float maxHealth = 100;
+    float maxHealth = 100;
     protected float currentHealth;
     float moveSpeed;
     int attackDmg;

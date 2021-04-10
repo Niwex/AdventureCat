@@ -10,7 +10,7 @@ public class MushroomController : MonstersScript
     public int _maxHealth;
     public float _attackRadius;
 
-    public float _nextAttackTime = 0f;
+    float _nextAttackTime = 0f;
     //movement
     public float _followRadius;
     //end
@@ -32,8 +32,8 @@ public class MushroomController : MonstersScript
         setAttackRadius(_attackRadius);
         setFollowRadius(_followRadius);
         setNextAttackTime(_nextAttackTime);
-        HealthLastFrame = maxHealth;
-        currentHealth = maxHealth;
+        HealthLastFrame = _maxHealth;
+        currentHealth = _maxHealth;
     }
 
     // Update is called once per frame
