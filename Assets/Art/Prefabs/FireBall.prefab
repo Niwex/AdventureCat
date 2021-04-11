@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7509950461281618311}
   - component: {fileID: 7509950461281618309}
   - component: {fileID: 2411551440611622573}
+  - component: {fileID: -464779003927452645}
+  - component: {fileID: -9172514216667587977}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Spell
@@ -121,3 +123,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-464779003927452645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509950461281618306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887f233957bca3e4f8442e7492226b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &-9172514216667587977
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509950461281618306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f90dc4cfc48d5c4bacd166033bec3e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
