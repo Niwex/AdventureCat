@@ -36,8 +36,8 @@ public class SkeletonController : MonstersScript
         setAttackRadius(_attackRadius);
         setFollowRadius(_followRadius);
         setNextAttackTime(_nextAttackTime);
-        HealthLastFrame = maxHealth;
-        currentHealth = maxHealth;
+        HealthLastFrame = _maxHealth;
+        currentHealth = _maxHealth;
     }
 
     // Update is called once per frame
@@ -51,7 +51,7 @@ public class SkeletonController : MonstersScript
         switch (state)
         {
             case State.IDLE:
-                enemyAnim.SetTrigger("iddle");
+                enemyAnim.SetTrigger("idle");
                 //Debug.Log("IDDLE");
                 break;
 
@@ -69,7 +69,9 @@ public class SkeletonController : MonstersScript
 
             case State.FOLLOW:
                 MoveToPlayer(playerTransform);
-                if (playerTransform.position.x < transform.position.x) enemyAnim.SetFloat("Move X", -1);
+                if (playerTransform.position.x < transform.position.x) 
+                    enemyAnim.SetFloat("Move X", -1);
+
                 else enemyAnim.SetFloat("Move X", 1);
                 enemyAnim.SetTrigger("walking");
                 //Debug.Log("FOLLOW");
