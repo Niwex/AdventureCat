@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7842780837689422514}
   - component: {fileID: 7842780837689422513}
   - component: {fileID: 7842780837689422512}
-  m_Layer: 0
+  - component: {fileID: 310828916}
+  m_Layer: 8
   m_Name: Flying Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 7842780837689422527}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 49d6a7155186e3e43ba8141c8ddeba83, type: 2}
+  m_Controller: {fileID: 9100000, guid: ba0bfc3a00bbf644eb6517716b3988e8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -143,11 +144,34 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1000000
+  m_AngularDrag: 1000000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &310828916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842780837689422527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ddb28125c8a19459f9275f926954fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthLastFrame: 0
+  _moveSpeed: 0
+  _attackDamage: 0
+  _attackRate: 1
+  _maxHealth: 100
+  _attackRadius: 0
+  _nextAttackTime: 0
+  _followRadius: 0
+  weaponCollider: {fileID: 0}
+  playerTransform: {fileID: 0}
+  enemyAnim: {fileID: 0}

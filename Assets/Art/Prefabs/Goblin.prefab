@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7618742463461803340}
   - component: {fileID: 7618742463461803336}
   - component: {fileID: 7618742463461803337}
-  m_Layer: 0
+  - component: {fileID: 1856057321}
+  m_Layer: 8
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 7618742463461803341}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 05ff4b318a4bf4e42ad182ef2f362c85, type: 2}
+  m_Controller: {fileID: 9100000, guid: cee463c2003422e4ab6656a4918215b0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -117,8 +118,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1000000
+  m_AngularDrag: 1000000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -151,3 +152,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5282302, y: 0.35394335}
   m_EdgeRadius: 0
+--- !u!114 &1856057321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618742463461803341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea26f5d010755340b2b5b8ab7e26a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthLastFrame: 0
+  _moveSpeed: 1
+  _attackDamage: 1
+  _attackRate: 0.5
+  _maxHealth: 100
+  _attackRadius: 1.5
+  _nextAttackTime: 0
+  _followRadius: 5
+  weaponCollider: {fileID: 0}
+  playerTransform: {fileID: 0}
+  enemyAnim: {fileID: 7618742463461803340}

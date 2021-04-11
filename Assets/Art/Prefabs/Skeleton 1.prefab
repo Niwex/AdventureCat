@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 4244278710607341811}
   - component: {fileID: 4244278710607341812}
   - component: {fileID: 4244278710607341813}
-  m_Layer: 0
+  - component: {fileID: 101683569}
+  - component: {fileID: 101683563}
+  m_Layer: 8
   m_Name: Skeleton 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 4244278710607341814}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e3fb8ea7d82f60d4681b8ffc0d3a80b0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 476d0a1a8af793144a35a6d59ad4397c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -143,11 +145,50 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1000000
+  m_AngularDrag: 1000000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &101683569
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244278710607341814}
+  m_Enabled: 1
+  m_Density: 1000000
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0033189058, y: 0.60753816}
+  serializedVersion: 2
+  m_Radius: 1.48
+--- !u!114 &101683563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244278710607341814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a123993f5de2854d8b2c4db322a4531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthLastFrame: 0
+  _moveSpeed: 1
+  _attackDamage: 2
+  _attackRate: 0.3
+  _maxHealth: 100
+  _attackRadius: 1.5
+  _nextAttackTime: 0
+  _followRadius: 5
+  weaponCollider: {fileID: 101683569}
+  playerTransform: {fileID: 0}
+  enemyAnim: {fileID: 4244278710607341811}
