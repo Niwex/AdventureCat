@@ -58,7 +58,7 @@ public class FlyingEyeController : MonstersScript
                 {
                     enemyAnim.SetTrigger("attack");
                     //Attack func
-                    Attack(FindObjectOfType<CharacterControl>());
+                    StartCoroutine(AttackWait());
                     setNextAttackTime(Time.time + 1f / getAttackRate());
                     //Debug.Log("ATTACK");
 
@@ -90,7 +90,16 @@ public class FlyingEyeController : MonstersScript
 
         HealthLastFrame = currentHealth;
     }
+    IEnumerator AttackWait()
+    {
 
+        yield return new WaitForSeconds(0.3f);
+        Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
+        if (checkAttackRadius(FindObjectOfType<CharacterControl>().transform))
+        {
+            Attack(FindObjectOfType<CharacterControl>());
+        }
+    }
     void OnDrawGizmosSelected()
     {
         //if (attackPoint == null)

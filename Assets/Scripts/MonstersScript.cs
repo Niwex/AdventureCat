@@ -24,8 +24,6 @@ public abstract class MonstersScript : MonoBehaviour
     }
     public void Attack(CharacterControl player)
     {
-        
-
         //attack
         if (player.getHealth > 0)
         {
@@ -38,8 +36,6 @@ public abstract class MonstersScript : MonoBehaviour
     public void getHit(float dmg)
     {
         currentHealth -= dmg;
-
-
         //Die 
         if (currentHealth <= 0)
             Die();
@@ -47,14 +43,17 @@ public abstract class MonstersScript : MonoBehaviour
 
     public void Die()
     {
-        
-        
-        
-        
+        StartCoroutine(DieWait());
+    }
+    IEnumerator DieWait()
+    {
+        yield return new WaitForSeconds(4);
+
         Destroy(gameObject);
     }
 
-    public void MoveToPlayer(Transform playerTransform)
+
+public void MoveToPlayer(Transform playerTransform)
     {
         float distCovered = Time.deltaTime * moveSpeed;
         float distBetweenMonsterAndPlayer = Vector3.Distance(transform.position, playerTransform.position);

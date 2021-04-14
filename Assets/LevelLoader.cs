@@ -11,10 +11,7 @@ public class LevelLoader : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        
-        
             LoadNextLevel();
-        
     }
 
     public void LoadNextLevel()
