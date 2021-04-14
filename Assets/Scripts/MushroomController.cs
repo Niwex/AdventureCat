@@ -18,6 +18,8 @@ public class MushroomController : MonstersScript
     [SerializeField] Transform playerTransform;
     [SerializeField] Animator enemyAnim;
     SpriteRenderer enemySR;
+
+    bool isHit = false;
     private void Start()
     {
         //get the player transform   
@@ -56,7 +58,7 @@ public class MushroomController : MonstersScript
                 {
                     enemyAnim.SetTrigger("attack");
                     //Attack func
-                    Attack(FindObjectOfType<CharacterControl>());
+                    StartCoroutine(AttackWait());
                     setNextAttackTime(Time.time + 1f / getAttackRate());
                     //Debug.Log("ATTACK");
 
@@ -88,6 +90,17 @@ public class MushroomController : MonstersScript
 
         HealthLastFrame = currentHealth;
     }
+    IEnumerator AttackWait()
+    {
+
+        yield return new WaitForSeconds(0.3f);
+        Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
+        if (checkAttackRadius(FindObjectOfType<CharacterControl>().transform))
+        {
+            Attack(FindObjectOfType<CharacterControl>());
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
         //if (attackPoint == null)

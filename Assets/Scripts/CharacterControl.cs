@@ -6,12 +6,12 @@ public class CharacterControl : MonoBehaviour
 {
     //Stats
     public float speed = 3;
-    public int maxHealth;
+    public float maxHealth;
     public float attackDmg = 20;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
-    public int getHealth { get { return currentHealth; } }
-    int currentHealth;
+    public float getHealth { get { return currentHealth; } }
+    float currentHealth;
 
     //Attack stats
     public Transform attackPoint;
@@ -56,7 +56,7 @@ public class CharacterControl : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    public void ChangeHealth(int amount)
+    public void ChangeHealth(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log("health  " + currentHealth);
