@@ -9,12 +9,12 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
     
-    void Update()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if(Input.GetKeyDown("r"))
-        {
+        
+        
             LoadNextLevel();
-        }
+        
     }
 
     public void LoadNextLevel()
