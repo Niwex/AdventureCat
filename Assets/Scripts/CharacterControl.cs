@@ -22,6 +22,7 @@ public class CharacterControl : MonoBehaviour
     public Animator animator;
     float horizontal;
     float vertical;
+    Vector2 lookDirection = new Vector2(1, 0);
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -36,6 +37,17 @@ public class CharacterControl : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+        Vector2 move = new Vector2(horizontal, vertical);
+
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("Move X", lookDirection.x);
+        //animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("speed", move.magnitude);
 
         if (Time.time >= nextAttackTime)
         {
@@ -58,6 +70,7 @@ public class CharacterControl : MonoBehaviour
 
     public void ChangeHealth(float amount)
     {
+        animator.SetTrigger("getHit");
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log("health  " + currentHealth);
     }
@@ -65,7 +78,7 @@ public class CharacterControl : MonoBehaviour
     public void Attack()
     {
         Debug.Log(this.animator);
-        this.animator.SetTrigger("Attack");
+        this.animator.SetTrigger("attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
