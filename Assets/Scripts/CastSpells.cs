@@ -45,7 +45,7 @@ public class CastSpells : MonoBehaviour
 
       // Debug.Log(distance);
       var fireballInsantiate = Instantiate(fireBall, distance, rot) as Rigidbody2D;
-      fireballInsantiate.AddForce(rot * new Vector2(1f, 0f) * 100f);
+      fireballInsantiate.AddForce(rot * new Vector2(1f, 0f) * 300f);
       //объект, текущее положение игрока + угол умноженный на X , разворот относительно спрайта
     }
   }

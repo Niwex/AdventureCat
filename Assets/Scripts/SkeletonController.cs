@@ -95,7 +95,7 @@ public class SkeletonController : MonstersScript
     IEnumerator AttackWait()
     {
         
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
         if (checkAttackRadius(FindObjectOfType<CharacterControl>().transform))
         {
