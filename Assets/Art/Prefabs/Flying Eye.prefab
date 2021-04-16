@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthLastFrame: 0
   _moveSpeed: 3
-  _attackDamage: 5
+  _attackDamage: 1
   _attackRate: 1
   _maxHealth: 100
   _attackRadius: 1
