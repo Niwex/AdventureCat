@@ -18,7 +18,7 @@ public class CastSpells : MonoBehaviour
   [SerializeField] float spellRadius = 1.5f;
   void Start()
   {
-    actions.Add("penis", FireAttack);
+    actions.Add("fire", FireAttack);
     keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
     keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
     keywordRecognizer.Start();
