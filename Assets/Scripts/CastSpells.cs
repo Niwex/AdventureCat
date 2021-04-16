@@ -12,18 +12,25 @@ public class CastSpells : MonoBehaviour
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
     public Rigidbody2D fireBall;
     // private GameObject WaterAura;
+<<<<<<< HEAD
 
+=======
+>>>>>>> AddMana
     public float maxMana;
     public float currentMana;
     public float manaRegen;
     float manaRegenTick = 0f;
+<<<<<<< HEAD
 
+=======
+>>>>>>> AddMana
     public GameObject waterBall;
     public GameObject activeWaterBall;
     [SerializeField] int numberOfBalls;
     [SerializeField] float spellRadius = 1.5f;
     Dictionary<string, int> spellCost = new Dictionary<string, int>();
     void Start()
+<<<<<<< HEAD
     {
         spellCost.Add("fire", 10);
         actions.Add("fire", FireAttack);
@@ -33,12 +40,24 @@ public class CastSpells : MonoBehaviour
     }
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
     {
+=======
+    {
+        spellCost.Add("fire", 10);
+        actions.Add("fire", FireAttack);
+        keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
+        keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
+        keywordRecognizer.Start();
+    }
+    private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
+    {
+>>>>>>> AddMana
         Debug.Log(speech.text);
         if (spellCost[speech.text] <= currentMana)
         {
             actions[speech.text].Invoke();
             currentMana -= spellCost[speech.text];
         }
+<<<<<<< HEAD
     }
     void WaterAttack()
     {
@@ -64,6 +83,29 @@ public class CastSpells : MonoBehaviour
     void Healing()
     {
         
+=======
+    }
+    void WaterAttack()
+    {
+        Instantiate(waterBall, transform.position, Quaternion.identity, gameObject.transform);
+
+    }
+    void FireAttack()
+    {
+        // int fireBallNumber = 5;
+        for (int i = 0; i < numberOfBalls; i++)
+        {
+            // Rigidbody2D fireBall = fireBalls[i];
+            var angle = 360 / numberOfBalls;
+            var rot = Quaternion.Euler(0, 0, (angle * i)); //угол на который будет повёрнут фаербол
+            var distance = transform.position + (rot * new Vector3(spellRadius, 0f, 0f));
+
+            // Debug.Log(distance);
+            var fireballInsantiate = Instantiate(fireBall, distance, rot) as Rigidbody2D;
+            fireballInsantiate.AddForce(rot * new Vector2(1f, 0f) * 300f);
+            //объект, текущее положение игрока + угол умноженный на X , разворот относительно спрайта
+        }
+>>>>>>> AddMana
     }
     // Update is called once per frame
     void Update()
