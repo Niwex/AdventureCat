@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpellCollision : MonoBehaviour
 {
+    [SerializeField] float fireBallDmg;
   // Start is called before the first frame update
   void Start()
   {
@@ -14,7 +15,7 @@ public class SpellCollision : MonoBehaviour
     var enemy = collision.gameObject.GetComponent<MonstersScript>();
     if (enemy != null)
     {
-      enemy.getHit(5);
+      enemy.getHit(fireBallDmg);
       Destroy(gameObject);
     }
   }

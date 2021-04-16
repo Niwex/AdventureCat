@@ -8,9 +8,11 @@ public class LevelLoader : MonoBehaviour
 
     public Animator transition;
     public float transitionTime = 1f;
-    
+
     void OnTriggerEnter2D(Collider2D col)
     {
+        CharacterControl player = col.GetComponent<CharacterControl>();
+        if (player != null)
             LoadNextLevel();
     }
 
