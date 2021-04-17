@@ -30,6 +30,10 @@ public class BossAlotOfLegs : MonoBehaviour
         currentHealth = maxHealth;
         playerTransform = FindObjectOfType<CharacterControl>().GetComponent<Transform>();
         bossSprite = GetComponent<SpriteRenderer>();
+
+        topHandAttackpoint.enabled = false;
+        leftHandAttackpoint.enabled = false;
+        rightHandAttackpoint.enabled = false;
     }
 
     // Update is called once per frame
@@ -44,6 +48,8 @@ public class BossAlotOfLegs : MonoBehaviour
             if (Time.time >= nextAttackTime)
             {
                 //attack
+                animator.SetTrigger("attack");
+                StartCoroutine(AttackWait());
                 Debug.Log("Attack");
                 nextAttackTime = Time.time + 1 / attackRate;
             }
@@ -68,7 +74,7 @@ public class BossAlotOfLegs : MonoBehaviour
             {
                 animator.SetTrigger("move");
                 MoveToPlayer(playerTransform);
-                //transform.localScale = new Vector3(-2, 2, 1);
+                transform.localScale = new Vector3(-2, 2, 1);
             }
         }
         else
@@ -88,6 +94,17 @@ public class BossAlotOfLegs : MonoBehaviour
             Debug.Log(this.gameObject + " Attacked " + player.gameObject + " and dealed " + attackDamage + "dmg");
             Debug.Log(player.gameObject + ":Health left" + player.getHealth);
         }
+    }
+    IEnumerator AttackWait()
+    {
+
+        yield return new WaitForSeconds(0.3f);
+        //Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
+        topHandAttackpoint.enabled = true;
+        leftHandAttackpoint.enabled = true;
+        rightHandAttackpoint.enabled = true;
+
+
     }
     public void getHit(float dmg)
     {
