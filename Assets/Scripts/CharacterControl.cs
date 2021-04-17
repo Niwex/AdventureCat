@@ -89,9 +89,10 @@ public class CharacterControl : MonoBehaviour
         {
             this.animator.SetTrigger("attack");
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRadius, enemyLayers);
-
+            //Debug.Log(hitEnemies);
             foreach (Collider2D enemy in hitEnemies)
             {
+                
                 Debug.Log("Hit " + enemy);
                 enemy.GetComponent<MonstersScript>().getHit(attackDmg);
                 //enemy.GetComponent<BossAlotOfLegs>().getHit(attackDmg+50);
@@ -101,7 +102,7 @@ public class CharacterControl : MonoBehaviour
         {
             this.animator.SetTrigger("attack");
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRadius, enemyLayers);
-
+            //Debug.Log(hitEnemies);
             foreach (Collider2D enemy in hitEnemies)
             {
                 Debug.Log("Hit " + enemy);
