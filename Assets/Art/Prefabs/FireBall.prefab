@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7509950461281618309}
   - component: {fileID: 2411551440611622573}
   - component: {fileID: -464779003927452645}
+  - component: {fileID: -7712877518414762345}
   - component: {fileID: -9172514216667587977}
   m_Layer: 0
   m_Name: FireBall
@@ -135,6 +136,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887f233957bca3e4f8442e7492226b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireBallDmg: 50
+--- !u!114 &-7712877518414762345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509950461281618306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e16ce42bc872d4aa52a21ac87fc3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyDistance: 20
 --- !u!95 &-9172514216667587977
 Animator:
   serializedVersion: 3
