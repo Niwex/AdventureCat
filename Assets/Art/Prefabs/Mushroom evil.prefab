@@ -166,11 +166,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthLastFrame: 0
   _moveSpeed: 1
-  _attackDamage: 1
-  _attackRate: 0.3
-  _maxHealth: 100
-  _attackRadius: 2
-  _followRadius: 5
+  _attackDamage: 20
+  _attackRate: 0.2
+  _maxHealth: 250
+  _attackRadius: 1.5
+  _followRadius: 7
   weaponCollider: {fileID: 0}
   playerTransform: {fileID: 0}
   enemyAnim: {fileID: 844231722632434867}

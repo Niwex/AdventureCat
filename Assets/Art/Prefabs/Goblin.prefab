@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7116985119897658943}
   - component: {fileID: 7289048575188957299}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: AttackHItBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7116985119897658943
 Transform:
   m_ObjectHideFlags: 0
@@ -41,7 +41,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1.1451418, y: 0.5454575}
@@ -224,12 +224,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthLastFrame: 0
   _moveSpeed: 1
-  _attackDamage: 1
+  _attackDamage: 5
   _attackRate: 0.5
   _maxHealth: 100
   _attackRadius: 1.5
   _nextAttackTime: 0
   _followRadius: 5
-  weaponCollider: {fileID: 0}
   playerTransform: {fileID: 0}
   enemyAnim: {fileID: 7618742463461803340}

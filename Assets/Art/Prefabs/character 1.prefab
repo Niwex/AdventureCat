@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 1941168747}
   - component: {fileID: 1941168749}
   - component: {fileID: 1941168748}
+  - component: {fileID: 1724340440}
   m_Layer: 5
   m_Name: Mana
   m_TagString: Untagged
@@ -483,15 +484,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 09803017048c1e44a80b43f0d362b10f, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1724340440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941168746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893902880da7cd14d95c95dd1f3d519c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells: {fileID: 1655415054}
 --- !u!1 &283438972626675123
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +694,7 @@ Transform:
   m_GameObject: {fileID: 5992461122518025855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.26, y: -1.18, z: 0}
-  m_LocalScale: {x: 0.685, y: 0.764, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4781453254924691793}
   - {fileID: 1689101892}
@@ -819,6 +833,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 2411551440611622573, guid: 83db13b7cdb17ac449a79c5077b41d97,
     type: 3}
+  maxMana: 100
+  currentMana: 100
+  manaRegen: 2
   waterBall: {fileID: 7359687232116488916, guid: 6e822ddd32379924b85a18c3ff3500a9,
     type: 3}
   activeWaterBall: {fileID: 0}
