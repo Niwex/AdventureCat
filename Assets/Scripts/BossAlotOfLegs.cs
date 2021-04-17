@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class BossAlotOfLegs : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float _moveSpeed;
+    public int _attackDamage;
+    public float _attackRate;
+    public int _maxHealth;
+    public float _attackRadius;
+
+    float _nextAttackTime = 0f;
+    //movement
+    public float _followRadius;
+    //end
+    
+    //[SerializeField] Transform playerTransform;
+    [SerializeField] Animator bossAnimator;
+    SpriteRenderer enemySR;
     void Start()
     {
         
@@ -14,5 +27,16 @@ public class BossAlotOfLegs : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        //if (attackPoint == null)
+        //return;
+        Vector3 position = transform.position;
+        position.y += 0.6f;
+        Gizmos.DrawWireSphere(position, _attackRadius);
+        Gizmos.DrawWireSphere(transform.position, _followRadius);
+
     }
 }
