@@ -85,7 +85,7 @@ public class CharacterControl : MonoBehaviour
         Debug.Log(animator.GetFloat("Move X"));
         Debug.Log(lookDirection);
         Debug.Log(this.animator);
-        if (animator.GetFloat("Move X") == 1)
+        if (animator.GetFloat("Move X") >= 0)
         {
             this.animator.SetTrigger("attack");
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRadius, enemyLayers);
@@ -94,6 +94,7 @@ public class CharacterControl : MonoBehaviour
             {
                 Debug.Log("Hit " + enemy);
                 enemy.GetComponent<MonstersScript>().getHit(attackDmg);
+                //enemy.GetComponent<BossAlotOfLegs>().getHit(attackDmg+50);
             }
         }
         else
@@ -105,6 +106,7 @@ public class CharacterControl : MonoBehaviour
             {
                 Debug.Log("Hit " + enemy);
                 enemy.GetComponent<MonstersScript>().getHit(attackDmg);
+                //enemy.GetComponent<BossAlotOfLegs>().getHit(attackDmg+50);
             }
         }
     }

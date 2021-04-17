@@ -9,7 +9,8 @@ public class BossAlotOfLegs : MonoBehaviour
     public float attackRate;
     public int maxHealth;
 
-    float currentHealth;
+    public float currentHealth;
+    float HealthLastFrame;
 
     public float attackRadius;
 
@@ -34,7 +35,49 @@ public class BossAlotOfLegs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (HealthLastFrame - currentHealth != 0)
+        {
+            StartCoroutine(waitGetHit());
+        }
+        if (checkAttackRadius(topHandAttackpoint, playerTransform) || checkAttackRadius(leftHandAttackpoint, playerTransform) || checkAttackRadius(rightHandAttackpoint, playerTransform))
+        {
+            if (Time.time >= nextAttackTime)
+            {
+                //attack
+                Debug.Log("Attack");
+                nextAttackTime = Time.time + 1 / attackRate;
+            }
+            else
+            {
+                //idle
+                animator.SetTrigger("idle");
+                //Debug.Log("wait for Attack");
+            }
+        }
+        else if (checkFollowRadius(playerTransform))
+        {
+            if (playerTransform.position.x > transform.position.x)
+            {
+                //Follow
+                animator.SetTrigger("move");
+                MoveToPlayer(playerTransform);
+                transform.localScale = new Vector3(2, 2, 1);
+                //Debug.Log("Move");
+            }
+            else
+            {
+                animator.SetTrigger("move");
+                MoveToPlayer(playerTransform);
+                transform.localScale = new Vector3(-2, 2, 1);
+            }
+        }
+        else
+        {
+            //idle
+            animator.SetTrigger("idle");
+            //Debug.Log("Idle");
+        }
+        HealthLastFrame = currentHealth;
     }
     public void Attack(CharacterControl player)
     {
@@ -54,6 +97,16 @@ public class BossAlotOfLegs : MonoBehaviour
             Die();
     }
 
+    IEnumerator waitGetHit()
+    {
+        if (bossSprite.color.a == 1)
+            bossSprite.color = new Color(1f, 1f, 1f, 0.5f);
+        else
+            bossSprite.color = new Color(1f, 1f, 1f, 1f);
+
+        yield return new WaitForSeconds(2);
+        bossSprite.color = new Color(1f, 1f, 1f, 1f);
+    }
     public void Die()
     {
         StartCoroutine(DieWait());
@@ -95,7 +148,7 @@ public class BossAlotOfLegs : MonoBehaviour
     public bool checkAttackRadius(Collider2D collider2D, Transform playerTransform)
     {
         Vector3 position = collider2D.transform.position;
-        
+
         if (Vector3.Distance(position, playerTransform.position) < attackRadius)
         {
             //in range for attack
@@ -115,7 +168,7 @@ public class BossAlotOfLegs : MonoBehaviour
         Gizmos.DrawWireSphere(topHandAttackpoint.transform.position, attackRadius);
         Gizmos.DrawWireSphere(leftHandAttackpoint.transform.position, attackRadius);
         Gizmos.DrawWireSphere(rightHandAttackpoint.transform.position, attackRadius);
-        
+
         Gizmos.DrawWireSphere(transform.position, followRadius);
 
     }
