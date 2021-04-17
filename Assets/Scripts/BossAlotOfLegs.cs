@@ -8,7 +8,10 @@ public class BossAlotOfLegs : MonoBehaviour
     public int attackDamage;
     public float attackRate;
     public int maxHealth;
+<<<<<<< HEAD
     float currentHealth;
+=======
+>>>>>>> Boss
     public float attackRadius;
 
     float nextAttackTime = 0f;
@@ -24,7 +27,10 @@ public class BossAlotOfLegs : MonoBehaviour
     SpriteRenderer bossSprite;
     void Start()
     {
+<<<<<<< HEAD
         currentHealth = maxHealth;
+=======
+>>>>>>> Boss
         playerTransform = FindObjectOfType<CharacterControl>().GetComponent<Transform>();
         bossSprite = GetComponent<SpriteRenderer>();
     }
