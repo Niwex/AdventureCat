@@ -94,7 +94,7 @@ public class FlyingEyeController : MonstersScript
     {
 
         yield return new WaitForSeconds(0.3f);
-        Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
+        //Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
         if (checkAttackRadius(FindObjectOfType<CharacterControl>().transform))
         {
             Attack(FindObjectOfType<CharacterControl>());

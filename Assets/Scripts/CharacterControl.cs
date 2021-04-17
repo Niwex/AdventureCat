@@ -58,6 +58,10 @@ public class CharacterControl : MonoBehaviour
             }
         }
 
+        if (getHealth == 0)
+        {
+            animator.SetTrigger("die");
+        }
     }
 
     private void FixedUpdate()
