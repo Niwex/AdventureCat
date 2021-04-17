@@ -28,7 +28,6 @@ public class CharacterControl : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
 
-
         attackRadius = 1.17f;
         currentHealth = maxHealth / 2;
     }
@@ -92,11 +91,17 @@ public class CharacterControl : MonoBehaviour
             //Debug.Log(hitEnemies);
             foreach (Collider2D enemy in hitEnemies)
             {
-                
-                Debug.Log("Hit " + enemy);
-                enemy.GetComponent<MonstersScript>().getHit(attackDmg);
-                //enemy.GetComponent<BossAlotOfLegs>().getHit(attackDmg+50);
-            }
+                if (enemy.TryGetComponent(out MonstersScript monster))
+                {
+                    Debug.Log("Hit " + enemy);
+                    monster.getHit(attackDmg);
+                }
+                if (enemy.TryGetComponent(out BossAlotOfLegs boss))
+                {
+                    Debug.Log("Hit " + enemy);
+                    boss.getHit(attackDmg+50);
+                }
+            } 
         }
         else
         {
@@ -105,9 +110,16 @@ public class CharacterControl : MonoBehaviour
             //Debug.Log(hitEnemies);
             foreach (Collider2D enemy in hitEnemies)
             {
-                Debug.Log("Hit " + enemy);
-                enemy.GetComponent<MonstersScript>().getHit(attackDmg);
-                //enemy.GetComponent<BossAlotOfLegs>().getHit(attackDmg+50);
+                if (enemy.TryGetComponent(out MonstersScript monster))
+                {
+                    Debug.Log("Hit " + enemy);
+                    monster.getHit(attackDmg);
+                }
+                if (enemy.TryGetComponent(out BossAlotOfLegs boss))
+                {
+                    Debug.Log("Hit " + enemy);
+                    boss.getHit(attackDmg + 50);
+                }
             }
         }
     }

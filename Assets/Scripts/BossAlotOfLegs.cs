@@ -37,7 +37,7 @@ public class BossAlotOfLegs : MonoBehaviour
     {
         if (HealthLastFrame - currentHealth != 0)
         {
-            StartCoroutine(waitGetHit());
+            //StartCoroutine(waitGetHit());
         }
         if (checkAttackRadius(topHandAttackpoint, playerTransform) || checkAttackRadius(leftHandAttackpoint, playerTransform) || checkAttackRadius(rightHandAttackpoint, playerTransform))
         {
@@ -68,7 +68,7 @@ public class BossAlotOfLegs : MonoBehaviour
             {
                 animator.SetTrigger("move");
                 MoveToPlayer(playerTransform);
-                transform.localScale = new Vector3(-2, 2, 1);
+                //transform.localScale = new Vector3(-2, 2, 1);
             }
         }
         else
@@ -92,21 +92,13 @@ public class BossAlotOfLegs : MonoBehaviour
     public void getHit(float dmg)
     {
         currentHealth -= dmg;
+        Debug.Log("Hit Apply");
         //Die 
         if (currentHealth <= 0)
             Die();
     }
 
-    IEnumerator waitGetHit()
-    {
-        if (bossSprite.color.a == 1)
-            bossSprite.color = new Color(1f, 1f, 1f, 0.5f);
-        else
-            bossSprite.color = new Color(1f, 1f, 1f, 1f);
-
-        yield return new WaitForSeconds(2);
-        bossSprite.color = new Color(1f, 1f, 1f, 1f);
-    }
+   
     public void Die()
     {
         StartCoroutine(DieWait());
