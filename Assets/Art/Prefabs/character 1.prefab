@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 4781453254924691793}
   - component: {fileID: 405537652802627810}
   m_Layer: 9
-  m_Name: AttackPoint
+  m_Name: AttackPointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283438972626675123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 1.07, z: 0}
+  m_LocalPosition: {x: 0.8, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5992461122518025851}
@@ -587,6 +587,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2304290804647345091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7012321391632355482}
+  m_Layer: 9
+  m_Name: AttackPointLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7012321391632355482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304290804647345091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5992461122518025851}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2383339212077607337
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +729,7 @@ Transform:
   - {fileID: 4781453254924691793}
   - {fileID: 1689101892}
   - {fileID: 1293454865}
+  - {fileID: 7012321391632355482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -857,8 +888,9 @@ MonoBehaviour:
   maxHealth: 100
   attackDmg: 20
   attackRate: 2
-  attackPoint: {fileID: 4781453254924691793}
-  attackRadius: 1
+  attackPointRight: {fileID: 4781453254924691793}
+  attackPointLeft: {fileID: 7012321391632355482}
+  attackRadius: 1.2
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256

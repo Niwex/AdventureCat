@@ -14,7 +14,8 @@ public class CharacterControl : MonoBehaviour
     float currentHealth;
 
     //Attack stats
-    public Transform attackPoint;
+    public Transform attackPointRight;
+    public Transform attackPointLeft;
     public float attackRadius;
     public LayerMask enemyLayers;
 
@@ -29,7 +30,7 @@ public class CharacterControl : MonoBehaviour
 
 
         attackRadius = 1.17f;
-        currentHealth = maxHealth/2;
+        currentHealth = maxHealth / 2;
     }
 
 
@@ -53,7 +54,7 @@ public class CharacterControl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Attack();
+                Attack(lookDirection);
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
@@ -79,24 +80,43 @@ public class CharacterControl : MonoBehaviour
         Debug.Log("health  " + currentHealth);
     }
 
-    public void Attack()
+    public void Attack(Vector2 lookDirection)
     {
+        Debug.Log(animator.GetFloat("Move X"));
+        Debug.Log(lookDirection);
         Debug.Log(this.animator);
-        this.animator.SetTrigger("attack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies)
+        if (animator.GetFloat("Move X") == 1)
         {
-            Debug.Log("Hit " + enemy);
-            enemy.GetComponent<MonstersScript>().getHit(attackDmg);
-            
+            this.animator.SetTrigger("attack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRadius, enemyLayers);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("Hit " + enemy);
+                enemy.GetComponent<MonstersScript>().getHit(attackDmg);
+            }
+        }
+        else
+        {
+            this.animator.SetTrigger("attack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRadius, enemyLayers);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("Hit " + enemy);
+                enemy.GetComponent<MonstersScript>().getHit(attackDmg);
+            }
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
+        if (attackPointRight == null)
             return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        Gizmos.DrawWireSphere(attackPointRight.position, attackRadius);
+        Vector3 a = new Vector3(-0.8f, 1, 0);
+        //attackPoint.position = a;
+        //Gizmos.DrawWireSphere(attackPoint.localScale, attackRadius);
+        Gizmos.DrawWireSphere(attackPointLeft.position, attackRadius);
     }
 }
