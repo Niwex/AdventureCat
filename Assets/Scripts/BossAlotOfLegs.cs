@@ -8,10 +8,9 @@ public class BossAlotOfLegs : MonoBehaviour
     public int attackDamage;
     public float attackRate;
     public int maxHealth;
-<<<<<<< HEAD
+
     float currentHealth;
-=======
->>>>>>> Boss
+
     public float attackRadius;
 
     float nextAttackTime = 0f;
@@ -27,10 +26,7 @@ public class BossAlotOfLegs : MonoBehaviour
     SpriteRenderer bossSprite;
     void Start()
     {
-<<<<<<< HEAD
         currentHealth = maxHealth;
-=======
->>>>>>> Boss
         playerTransform = FindObjectOfType<CharacterControl>().GetComponent<Transform>();
         bossSprite = GetComponent<SpriteRenderer>();
     }
@@ -96,10 +92,10 @@ public class BossAlotOfLegs : MonoBehaviour
     }
 
     //if player in radius attack him
-    public bool checkAttackRadius(Transform playerTransform)
+    public bool checkAttackRadius(Collider2D collider2D, Transform playerTransform)
     {
-        Vector3 position = transform.position;
-        position.y += 0.6f;
+        Vector3 position = collider2D.transform.position;
+        
         if (Vector3.Distance(position, playerTransform.position) < attackRadius)
         {
             //in range for attack
@@ -116,7 +112,10 @@ public class BossAlotOfLegs : MonoBehaviour
         //return;
         Vector3 position = transform.position;
         position.y += 0.6f;
-        Gizmos.DrawWireSphere(position, attackRadius);
+        Gizmos.DrawWireSphere(topHandAttackpoint.transform.position, attackRadius);
+        Gizmos.DrawWireSphere(leftHandAttackpoint.transform.position, attackRadius);
+        Gizmos.DrawWireSphere(rightHandAttackpoint.transform.position, attackRadius);
+        
         Gizmos.DrawWireSphere(transform.position, followRadius);
 
     }
