@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class FireBallDestroyer : MonoBehaviour
 {
-    [SerializeField] float flyDistance;
+    [SerializeField] float secondsToDestroy;
     void Start()
     {
-        
+
     }
 
 
     void Update()
     {
-        if (transform.position.magnitude > flyDistance)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, secondsToDestroy);
     }
-
 }

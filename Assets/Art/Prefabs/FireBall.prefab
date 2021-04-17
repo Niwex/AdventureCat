@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e16ce42bc872d4aa52a21ac87fc3c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyDistance: 20
+  secondsToDestroy: 3
 --- !u!95 &-9172514216667587977
 Animator:
   serializedVersion: 3
