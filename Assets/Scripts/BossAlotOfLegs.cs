@@ -111,7 +111,7 @@ public class BossAlotOfLegs : MonoBehaviour
         //if (attackPoint == null)
         //return;
         Vector3 position = transform.position;
-        position.y += 0.6f;
+        //position.y += 0.6f;
         Gizmos.DrawWireSphere(topHandAttackpoint.transform.position, attackRadius);
         Gizmos.DrawWireSphere(leftHandAttackpoint.transform.position, attackRadius);
         Gizmos.DrawWireSphere(rightHandAttackpoint.transform.position, attackRadius);
