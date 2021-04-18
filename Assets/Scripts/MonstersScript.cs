@@ -43,6 +43,8 @@ public abstract class MonstersScript : MonoBehaviour
 
     public void Die()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().isKinematic = true;
         StartCoroutine(DieWait());
     }
     IEnumerator DieWait()

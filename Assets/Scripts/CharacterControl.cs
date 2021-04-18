@@ -23,7 +23,7 @@ public class CharacterControl : MonoBehaviour
     public Animator animator;
     float horizontal;
     float vertical;
-    public Vector2 lookDirection { get; set; } = new Vector2(1, 0);
+    public Vector2 lookDirection = new Vector2(1, 0);
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -44,7 +44,7 @@ public class CharacterControl : MonoBehaviour
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
         }
-
+        Debug.Log(lookDirection.x);
         animator.SetFloat("Move X", lookDirection.x);
         //animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("speed", move.magnitude);
@@ -74,7 +74,7 @@ public class CharacterControl : MonoBehaviour
 
     public void ChangeHealth(float amount)
     {
-        if(amount< 0)
+        if(amount < 0)
             animator.SetTrigger("getHit");
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log("health  " + currentHealth);
