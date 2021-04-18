@@ -12,9 +12,10 @@ public class CharacterControl : MonoBehaviour
     float nextAttackTime = 0f;
     public float getHealth { get { return currentHealth; } }
     float currentHealth;
-
+    public bool powerBuff { get; set; } = false;
     //Attack stats
-    public Transform attackPoint;
+    public Transform attackPointRight;
+    public Transform attackPointLeft;
     public float attackRadius;
     public LayerMask enemyLayers;
 
@@ -22,14 +23,13 @@ public class CharacterControl : MonoBehaviour
     public Animator animator;
     float horizontal;
     float vertical;
-    Vector2 lookDirection = new Vector2(1, 0);
+    public Vector2 lookDirection { get; set; } = new Vector2(1, 0);
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
 
-
         attackRadius = 1.17f;
-        currentHealth = maxHealth/2;
+        currentHealth = maxHealth / 2;
     }
 
 
@@ -53,11 +53,15 @@ public class CharacterControl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Attack();
+                Attack(lookDirection);
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
 
+        if (getHealth == 0)
+        {
+            animator.SetTrigger("die");
+        }
     }
 
     private void FixedUpdate()
@@ -70,29 +74,93 @@ public class CharacterControl : MonoBehaviour
 
     public void ChangeHealth(float amount)
     {
-        animator.SetTrigger("getHit");
+        if(amount< 0)
+            animator.SetTrigger("getHit");
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log("health  " + currentHealth);
     }
 
-    public void Attack()
+    public void Attack(Vector2 lookDirection)
     {
+        Debug.Log(animator.GetFloat("Move X"));
+        Debug.Log(lookDirection);
         Debug.Log(this.animator);
-        this.animator.SetTrigger("attack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies)
+        if (animator.GetFloat("Move X") >= 0)
         {
-            Debug.Log("Hit " + enemy);
-            enemy.GetComponent<MonstersScript>().getHit(attackDmg);
-            
+            this.animator.SetTrigger("attack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRadius, enemyLayers);
+            //Debug.Log(hitEnemies);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                if (enemy.TryGetComponent(out MonstersScript monster))
+                {
+                    Debug.Log("Hit " + enemy);
+                    if (!powerBuff)
+                    {
+                        monster.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        monster.getHit(attackDmg+GetComponent<CastSpells>().powerBuff);
+                    }
+                }
+                if (enemy.TryGetComponent(out BossAlotOfLegs boss))
+                {
+                    Debug.Log("Hit " + enemy);
+                    if (!powerBuff)
+                    {
+                        boss.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        boss.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
+                    }
+                }
+            } 
+        }
+        else
+        {
+            this.animator.SetTrigger("attack");
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRadius, enemyLayers);
+            //Debug.Log(hitEnemies);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                if (enemy.TryGetComponent(out MonstersScript monster))
+                {
+                    Debug.Log("Hit " + enemy);
+                    if (!powerBuff)
+                    {
+                        monster.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        monster.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
+                    }
+                }
+                if (enemy.TryGetComponent(out BossAlotOfLegs boss))
+                {
+                    Debug.Log("Hit " + enemy);
+                    if (!powerBuff)
+                    {
+                        boss.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        boss.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
+                    }
+                }
+            }
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
+        if (attackPointRight == null)
             return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        Gizmos.DrawWireSphere(attackPointRight.position, attackRadius);
+        Vector3 a = new Vector3(-0.8f, 1, 0);
+        //attackPoint.position = a;
+        //Gizmos.DrawWireSphere(attackPoint.localScale, attackRadius);
+        Gizmos.DrawWireSphere(attackPointLeft.position, attackRadius);
     }
 }

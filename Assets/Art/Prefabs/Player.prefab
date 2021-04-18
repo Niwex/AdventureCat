@@ -407,7 +407,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -11
-  m_Sprite: {fileID: 21300000, guid: 61bf18581045a2b41be2b7934ab40c8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23ac164b1dbb67b48bb12be03d00fe09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 1941168747}
   - component: {fileID: 1941168749}
   - component: {fileID: 1941168748}
+  - component: {fileID: 1724340440}
   m_Layer: 5
   m_Name: Mana
   m_TagString: Untagged
@@ -483,15 +484,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 09803017048c1e44a80b43f0d362b10f, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1724340440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941168746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893902880da7cd14d95c95dd1f3d519c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells: {fileID: 1655415054}
 --- !u!1 &283438972626675123
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +517,7 @@ GameObject:
   - component: {fileID: 4781453254924691793}
   - component: {fileID: 405537652802627810}
   m_Layer: 9
-  m_Name: AttackPoint
+  m_Name: AttackPointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283438972626675123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 1.07, z: 0}
+  m_LocalPosition: {x: 0.8, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5992461122518025851}
@@ -573,6 +587,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2304290804647345091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7012321391632355482}
+  m_Layer: 9
+  m_Name: AttackPointLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7012321391632355482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304290804647345091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5992461122518025851}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2383339212077607337
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +709,7 @@ GameObject:
   - component: {fileID: 1655415054}
   - component: {fileID: 1655415056}
   m_Layer: 9
-  m_Name: character 1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,11 +724,12 @@ Transform:
   m_GameObject: {fileID: 5992461122518025855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.26, y: -1.18, z: 0}
-  m_LocalScale: {x: 0.685, y: 0.764, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4781453254924691793}
   - {fileID: 1689101892}
   - {fileID: 1293454865}
+  - {fileID: 7012321391632355482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -752,8 +797,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1000000
+  m_AngularDrag: 1000000
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -819,6 +864,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 2411551440611622573, guid: 83db13b7cdb17ac449a79c5077b41d97,
     type: 3}
+  maxMana: 100
+  currentMana: 100
+  manaRegen: 2
+  powerBuff: 50
+  powerBuffTime: 10
+  healingAmount: 4
+  healingTick: 0
+  healingTime: 10
   waterBall: {fileID: 7359687232116488916, guid: 6e822ddd32379924b85a18c3ff3500a9,
     type: 3}
   activeWaterBall: {fileID: 0}
@@ -840,8 +893,9 @@ MonoBehaviour:
   maxHealth: 100
   attackDmg: 20
   attackRate: 2
-  attackPoint: {fileID: 4781453254924691793}
-  attackRadius: 1
+  attackPointRight: {fileID: 4781453254924691793}
+  attackPointLeft: {fileID: 7012321391632355482}
+  attackRadius: 1.4
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256

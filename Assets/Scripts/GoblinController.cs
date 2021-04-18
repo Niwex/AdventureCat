@@ -15,10 +15,11 @@ public class GoblinController : MonstersScript
     public float _attackRadius;
 
     public float _nextAttackTime = 0f;
+    //bool isAttacking = false;
     //movement
     public float _followRadius;
     //end
-    [SerializeField] CircleCollider2D weaponCollider;
+    //[SerializeField] GameObject weaponCollider;
     [SerializeField] Transform playerTransform;
     [SerializeField] Animator enemyAnim;
     SpriteRenderer enemySR;
@@ -38,6 +39,8 @@ public class GoblinController : MonstersScript
         setNextAttackTime(_nextAttackTime);
         HealthLastFrame = _maxHealth;
         currentHealth = _maxHealth;
+
+        //weaponCollider.SetActive(false);
     }
 
     void Update()
@@ -55,8 +58,9 @@ public class GoblinController : MonstersScript
                 break;
 
             case State.ATTACK:
-                if (Time.time >= getNextAttackTime())
+                if (Time.time >= getNextAttackTime() )//&& !isAttacking)
                 {
+                    //isAttacking = true;
                     enemyAnim.SetTrigger("attack");
                     //Attack func
                     StartCoroutine(AttackWait());
@@ -93,8 +97,10 @@ public class GoblinController : MonstersScript
     }
     IEnumerator AttackWait()
     {
-
+        //weaponCollider.SetActive(true);
         yield return new WaitForSeconds(0.3f);
+        //weaponCollider.SetActive(false);
+        //isAttacking = false;
         Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
         if (checkAttackRadius(FindObjectOfType<CharacterControl>().transform))
         {

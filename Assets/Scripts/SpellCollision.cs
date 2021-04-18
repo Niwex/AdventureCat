@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class SpellCollision : MonoBehaviour
 {
-  // Start is called before the first frame update
-  void Start()
-  {
-
-  }
-  private void OnTriggerEnter2D(Collider2D collision)
-  {
-    var enemy = collision.gameObject.GetComponent<MonstersScript>();
-    if (enemy != null)
+    [SerializeField] float fireBallDmg;
+   
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-      enemy.getHit(5);
-      Destroy(gameObject);
+        var enemy = collision.gameObject.GetComponent<MonstersScript>();
+        var boss = collision.gameObject.GetComponent<BossAlotOfLegs>();
+        if (enemy != null)
+        {
+            enemy.getHit(fireBallDmg);
+            Destroy(gameObject);
+        }
+        if (boss != null)
+        {
+            boss.getHit(fireBallDmg + 50);
+            Destroy(gameObject);
+        }
     }
-  }
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
+    
+   
 }
