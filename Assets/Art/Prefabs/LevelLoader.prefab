@@ -215,8 +215,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2648201994802526519}
-  - component: {fileID: 1505234850453038154}
   - component: {fileID: 7209120355601788613}
+  - component: {fileID: 1505234850453038154}
+  - component: {fileID: 7023766173560939808}
   m_Layer: 0
   m_Name: LevelLoader
   m_TagString: Untagged
@@ -239,20 +240,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1505234850453038154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2648201994802526518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c588fb6756c1b141a0eff6150e04cc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 2648201994373943665}
-  transitionTime: 1
 --- !u!61 &7209120355601788613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279,3 +266,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 11.278702, y: 8.175373}
   m_EdgeRadius: 0
+--- !u!114 &1505234850453038154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648201994802526518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c588fb6756c1b141a0eff6150e04cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 2648201994373943665}
+  transitionTime: 1
+--- !u!114 &7023766173560939808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648201994802526518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a717af8d704fa47bea136b15e084c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
