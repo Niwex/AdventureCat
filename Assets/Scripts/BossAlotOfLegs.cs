@@ -92,7 +92,6 @@ public class BossAlotOfLegs : MonoBehaviour
         {
             animator.SetTrigger("die");
             Die();
-            FindObjectOfType<LevelLoader>().allowTransition = true;
         }
         HealthLastFrame = currentHealth;
     }

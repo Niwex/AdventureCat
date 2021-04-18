@@ -6,6 +6,7 @@ public class AllowTransitionSpawners : MonoBehaviour
 {
     GameObject[] spawners;
     [SerializeField] SpriteRenderer spriteRenderer;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -13,14 +14,17 @@ public class AllowTransitionSpawners : MonoBehaviour
     }
     void Update()
     {
-        if (FindObjectOfType<EnemySpawner>() == null)
+        if (FindObjectOfType<BossAlotOfLegs>() == null)
         {
-            FindObjectOfType<LevelLoader>().allowTransition = true;
-        }
-        if (FindObjectOfType<LevelLoader>().allowTransition)
-        {
-            Debug.Log("Sheep is ready");
-            spriteRenderer.enabled = true;
+            if (FindObjectOfType<EnemySpawner>() == null)
+            {
+                FindObjectOfType<LevelLoader>().allowTransition = true;
+            }
+            if (FindObjectOfType<LevelLoader>().allowTransition)
+            {
+                Debug.Log("Sheep is ready");
+                spriteRenderer.enabled = true;
+            }
         }
     }
 }
