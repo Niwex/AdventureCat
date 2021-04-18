@@ -407,7 +407,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -11
-  m_Sprite: {fileID: 21300000, guid: 61bf18581045a2b41be2b7934ab40c8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23ac164b1dbb67b48bb12be03d00fe09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -890,7 +890,7 @@ MonoBehaviour:
   attackRate: 2
   attackPointRight: {fileID: 4781453254924691793}
   attackPointLeft: {fileID: 7012321391632355482}
-  attackRadius: 1.2
+  attackRadius: 1.4
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256

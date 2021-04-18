@@ -8,12 +8,16 @@ public class LevelLoader : MonoBehaviour
 
     public Animator transition;
     public float transitionTime = 1f;
+    public bool allowTransition { get; set; } = false;
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        CharacterControl player = col.GetComponent<CharacterControl>();
-        if (player != null)
-            LoadNextLevel();
+        if (allowTransition)
+        {
+            CharacterControl player = col.GetComponent<CharacterControl>();
+            if (player != null)
+                LoadNextLevel();
+        }
     }
 
     public void LoadNextLevel()

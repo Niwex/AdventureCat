@@ -20,20 +20,22 @@ public class BossAlotOfLegs : MonoBehaviour
     //end
 
     [SerializeField] Transform playerTransform;
-    [SerializeField] Collider2D topHandAttackpoint;
-    [SerializeField] Collider2D leftHandAttackpoint;
-    [SerializeField] Collider2D rightHandAttackpoint;
+    [SerializeField] GameObject topHandAttackpoint;
+    [SerializeField] GameObject leftHandAttackpoint;
+    [SerializeField] GameObject rightHandAttackpoint;
     [SerializeField] Animator animator;
     SpriteRenderer bossSprite;
+
+    bool isAttack = false;
     void Start()
     {
         currentHealth = maxHealth;
         playerTransform = FindObjectOfType<CharacterControl>().GetComponent<Transform>();
         bossSprite = GetComponent<SpriteRenderer>();
 
-        topHandAttackpoint.enabled = false;
-        leftHandAttackpoint.enabled = false;
-        rightHandAttackpoint.enabled = false;
+        topHandAttackpoint.SetActive(false); 
+        leftHandAttackpoint.SetActive(false); 
+        rightHandAttackpoint.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,15 +45,18 @@ public class BossAlotOfLegs : MonoBehaviour
         {
             //StartCoroutine(waitGetHit());
         }
-        if (checkAttackRadius(topHandAttackpoint, playerTransform) || checkAttackRadius(leftHandAttackpoint, playerTransform) || checkAttackRadius(rightHandAttackpoint, playerTransform))
+        if (checkAttackRadius(topHandAttackpoint, playerTransform) || checkAttackRadius(leftHandAttackpoint, playerTransform) )//|| checkAttackRadius(rightHandAttackpoint, playerTransform))
         {
-            if (Time.time >= nextAttackTime)
+            if (Time.time >= nextAttackTime && !isAttack)
             {
-                //attack
+                isAttack = true;
+                //Attack anim
                 animator.SetTrigger("attack");
+                //attack
                 StartCoroutine(AttackWait());
                 Debug.Log("Attack");
                 nextAttackTime = Time.time + 1 / attackRate;
+                
             }
             else
             {
@@ -83,6 +88,12 @@ public class BossAlotOfLegs : MonoBehaviour
             animator.SetTrigger("idle");
             //Debug.Log("Idle");
         }
+        if (currentHealth<= 0)
+        {
+            animator.SetTrigger("die");
+            Die();
+            FindObjectOfType<LevelLoader>().allowTransition = true;
+        }
         HealthLastFrame = currentHealth;
     }
     public void Attack(CharacterControl player)
@@ -97,12 +108,16 @@ public class BossAlotOfLegs : MonoBehaviour
     }
     IEnumerator AttackWait()
     {
-
-        yield return new WaitForSeconds(0.3f);
+        rightHandAttackpoint.SetActive(true);
+        topHandAttackpoint.SetActive(true);
+        leftHandAttackpoint.SetActive(true);
+        yield return new WaitForSeconds(.4f);
         //Debug.Log(checkAttackRadius(FindObjectOfType<CharacterControl>().transform));
-        topHandAttackpoint.enabled = true;
-        leftHandAttackpoint.enabled = true;
-        rightHandAttackpoint.enabled = true;
+        rightHandAttackpoint.SetActive(false);
+        topHandAttackpoint.SetActive(false);
+        leftHandAttackpoint.SetActive(false);
+        isAttack = false;
+        //rightHandAttackpoint.enabled = true;
 
 
     }
@@ -154,9 +169,9 @@ public class BossAlotOfLegs : MonoBehaviour
     }
 
     //if player in radius attack him
-    public bool checkAttackRadius(Collider2D collider2D, Transform playerTransform)
+    public bool checkAttackRadius(GameObject obj, Transform playerTransform)
     {
-        Vector3 position = collider2D.transform.position;
+        Vector3 position = obj.transform.position;
 
         if (Vector3.Distance(position, playerTransform.position) < attackRadius)
         {
