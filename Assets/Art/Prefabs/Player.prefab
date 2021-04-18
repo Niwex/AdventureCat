@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 1655415054}
   - component: {fileID: 1655415056}
   m_Layer: 9
-  m_Name: character 1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -867,6 +867,11 @@ MonoBehaviour:
   maxMana: 100
   currentMana: 100
   manaRegen: 2
+  powerBuff: 50
+  powerBuffTime: 10
+  healingAmount: 4
+  healingTick: 0
+  healingTime: 10
   waterBall: {fileID: 7359687232116488916, guid: 6e822ddd32379924b85a18c3ff3500a9,
     type: 3}
   activeWaterBall: {fileID: 0}

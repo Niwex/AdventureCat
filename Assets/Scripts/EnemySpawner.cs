@@ -37,6 +37,8 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
+        else
+            Destroy(gameObject);
         
     }
 

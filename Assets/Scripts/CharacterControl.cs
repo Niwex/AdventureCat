@@ -12,7 +12,7 @@ public class CharacterControl : MonoBehaviour
     float nextAttackTime = 0f;
     public float getHealth { get { return currentHealth; } }
     float currentHealth;
-
+    public bool powerBuff { get; set; } = false;
     //Attack stats
     public Transform attackPointRight;
     public Transform attackPointLeft;
@@ -23,7 +23,7 @@ public class CharacterControl : MonoBehaviour
     public Animator animator;
     float horizontal;
     float vertical;
-    Vector2 lookDirection = new Vector2(1, 0);
+    public Vector2 lookDirection { get; set; } = new Vector2(1, 0);
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -74,7 +74,8 @@ public class CharacterControl : MonoBehaviour
 
     public void ChangeHealth(float amount)
     {
-        animator.SetTrigger("getHit");
+        if(amount< 0)
+            animator.SetTrigger("getHit");
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log("health  " + currentHealth);
     }
@@ -94,12 +95,26 @@ public class CharacterControl : MonoBehaviour
                 if (enemy.TryGetComponent(out MonstersScript monster))
                 {
                     Debug.Log("Hit " + enemy);
-                    monster.getHit(attackDmg);
+                    if (!powerBuff)
+                    {
+                        monster.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        monster.getHit(attackDmg+GetComponent<CastSpells>().powerBuff);
+                    }
                 }
                 if (enemy.TryGetComponent(out BossAlotOfLegs boss))
                 {
                     Debug.Log("Hit " + enemy);
-                    boss.getHit(attackDmg+50);
+                    if (!powerBuff)
+                    {
+                        boss.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        boss.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
+                    }
                 }
             } 
         }
@@ -113,12 +128,26 @@ public class CharacterControl : MonoBehaviour
                 if (enemy.TryGetComponent(out MonstersScript monster))
                 {
                     Debug.Log("Hit " + enemy);
-                    monster.getHit(attackDmg);
+                    if (!powerBuff)
+                    {
+                        monster.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        monster.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
+                    }
                 }
                 if (enemy.TryGetComponent(out BossAlotOfLegs boss))
                 {
                     Debug.Log("Hit " + enemy);
-                    boss.getHit(attackDmg + 50);
+                    if (!powerBuff)
+                    {
+                        boss.getHit(attackDmg);
+                    }
+                    else
+                    {
+                        boss.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
+                    }
                 }
             }
         }

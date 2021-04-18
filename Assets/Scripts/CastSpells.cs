@@ -17,6 +17,13 @@ public class CastSpells : MonoBehaviour
     public float currentMana;
     public float manaRegen;
     float manaRegenTick = 0f;
+    public float powerBuff = 50f;
+    public float powerBuffTime = 10f;
+    public float healingAmount = 4f;
+    public float healingTick = 0f;
+    public int healingTime = 10;
+    int healingCount;
+    bool healing = false;
 
     public GameObject waterBall;
     public GameObject activeWaterBall;
@@ -26,13 +33,19 @@ public class CastSpells : MonoBehaviour
     void Start()
 
     {
-        spellCost.Add("fire", 10);
+        spellCost.Add("fire", 50);
         actions.Add("fire", FireAttack);
-        keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
+
+        spellCost.Add("heal", 10);
+        actions.Add("heal", Healing);
+
+        spellCost.Add("power", 20);
+        actions.Add("power", PowerBuff);
+        keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray(), ConfidenceLevel.Low);
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
         keywordRecognizer.Start();
     }
-    
+
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
     {
 
@@ -65,10 +78,22 @@ public class CastSpells : MonoBehaviour
             //объект, текущее положение игрока + угол умноженный на X , разворот относительно спрайта
         }
     }
+
     void Healing()
     {
-        
-
+        GetComponent<Animator>().SetTrigger("healing");
+        healing = true;
+    }
+    void PowerBuff()
+    {
+        GetComponent<Animator>().SetTrigger("power");
+        GetComponent<CharacterControl>().powerBuff = true;
+        StartCoroutine(PowerBuffTimer());
+    }
+    IEnumerator PowerBuffTimer()
+    {
+        yield return new WaitForSeconds(powerBuffTime);
+        GetComponent<CharacterControl>().powerBuff = false;
     }
     // Update is called once per frame
     void Update()
@@ -89,8 +114,8 @@ public class CastSpells : MonoBehaviour
             // int piMultiplier = 1;
 
         }
-        if(Time.time>manaRegenTick)
-            {
+        if (Time.time > manaRegenTick)
+        {
             if (currentMana < maxMana)
             {
                 if (currentMana + manaRegen < maxMana)
@@ -98,7 +123,25 @@ public class CastSpells : MonoBehaviour
                 else
                     currentMana = maxMana;
                 manaRegenTick = Time.time + 1f;
-            } 
+            }
+        }
+        if (healing)
+        {
+            if (healingTime > healingCount)
+            {
+                if (Time.time > healingTick)
+                {
+                    GetComponent<CharacterControl>().ChangeHealth(healingAmount);
+                    healingTick = Time.time + 1f;
+                    healingCount++;
+                }
+
+            }
+            else
+            {
+                healing = false;
+                healingCount = 0;
+            }
         }
     }
 }
