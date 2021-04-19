@@ -16,7 +16,6 @@ public class Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         fillBarPercent = player.getHealth / player.maxHealth;
         image.fillAmount = fillBarPercent;
     }

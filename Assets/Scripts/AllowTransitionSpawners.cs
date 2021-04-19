@@ -6,11 +6,12 @@ public class AllowTransitionSpawners : MonoBehaviour
 {
     GameObject[] spawners;
     [SerializeField] SpriteRenderer spriteRenderer;
-
+    [SerializeField] Animator animator; 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.enabled = false;
+        //spriteRenderer.enabled = false;
+        animator.GetComponent<Animator>();
     }
     void Update()
     {
@@ -24,6 +25,7 @@ public class AllowTransitionSpawners : MonoBehaviour
             {
                 //Debug.Log("Sheep is ready");
                 spriteRenderer.enabled = true;
+                animator.SetBool("portalActive", true);
             }
         }
     }
