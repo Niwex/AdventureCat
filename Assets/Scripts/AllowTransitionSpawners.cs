@@ -22,7 +22,7 @@ public class AllowTransitionSpawners : MonoBehaviour
             }
             if (FindObjectOfType<LevelLoader>().allowTransition)
             {
-                Debug.Log("Sheep is ready");
+                //Debug.Log("Sheep is ready");
                 spriteRenderer.enabled = true;
             }
         }

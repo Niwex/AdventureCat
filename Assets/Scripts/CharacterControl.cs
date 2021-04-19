@@ -44,7 +44,7 @@ public class CharacterControl : MonoBehaviour
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
         }
-        Debug.Log(lookDirection.x);
+        //Debug.Log(lookDirection.x);
         animator.SetFloat("Move X", lookDirection.x);
         //animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("speed", move.magnitude);
