@@ -108,7 +108,7 @@ public class CastSpells : MonoBehaviour
         {
             WaterAttack();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             FireAttack();
             // int piMultiplier = 1;

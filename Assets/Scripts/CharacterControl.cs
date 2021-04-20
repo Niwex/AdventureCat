@@ -32,7 +32,7 @@ public class CharacterControl : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
 
         attackRadius = 1.17f;
-        currentHealth = maxHealth / 2;
+        currentHealth = maxHealth;
     }
 
 
