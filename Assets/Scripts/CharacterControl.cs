@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterControl : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CharacterControl : MonoBehaviour
     float nextAttackTime = 0f;
     public float getHealth { get { return currentHealth; } }
     float currentHealth;
+    bool dead = false;
+    bool invincable = false;
     public bool powerBuff { get; set; } = false;
     //Attack stats
     public Transform attackPointRight;
@@ -35,35 +38,60 @@ public class CharacterControl : MonoBehaviour
 
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        Vector2 move = new Vector2(horizontal, vertical);
-
-        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        if (!dead)
         {
-            lookDirection.Set(move.x, move.y);
-            lookDirection.Normalize();
-        }
-        //Debug.Log(lookDirection.x);
-        animator.SetFloat("Move X", lookDirection.x);
-        //animator.SetFloat("Look Y", lookDirection.y);
-        animator.SetFloat("speed", move.magnitude);
-
-        if (Time.time >= nextAttackTime)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                Attack(lookDirection);
-                nextAttackTime = Time.time + 1f / attackRate;
+                if(!invincable)
+                    invincable = true;
+                else 
+                    invincable = false;
+            }
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+            Vector2 move = new Vector2(horizontal, vertical);
+
+            if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+            {
+                lookDirection.Set(move.x, move.y);
+                lookDirection.Normalize();
+            }
+            //Debug.Log(lookDirection.x);
+            animator.SetFloat("Move X", lookDirection.x);
+            //animator.SetFloat("Look Y", lookDirection.y);
+            animator.SetFloat("speed", move.magnitude);
+
+            if (Time.time >= nextAttackTime)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Attack(lookDirection);
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
+            }
+
+            if (getHealth == 0)
+            {
+                dead = true;
+                animator.SetTrigger("die");
+                Die();
             }
         }
-
-        if (getHealth == 0)
+        else
         {
-            animator.SetTrigger("die");
+
         }
     }
 
+    void Die()
+    {
+        StartCoroutine(DieWait());
+    }
+    IEnumerator DieWait()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     private void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
@@ -74,10 +102,13 @@ public class CharacterControl : MonoBehaviour
 
     public void ChangeHealth(float amount)
     {
-        if(amount < 0)
-            animator.SetTrigger("getHit");
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log("health  " + currentHealth);
+        if (!invincable)
+        {
+            if (amount < 0)
+                animator.SetTrigger("getHit");
+            currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+            Debug.Log("health  " + currentHealth);
+        }
     }
 
     public void Attack(Vector2 lookDirection)
@@ -101,7 +132,7 @@ public class CharacterControl : MonoBehaviour
                     }
                     else
                     {
-                        monster.getHit(attackDmg+GetComponent<CastSpells>().powerBuff);
+                        monster.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
                     }
                 }
                 if (enemy.TryGetComponent(out BossAlotOfLegs boss))
@@ -116,7 +147,7 @@ public class CharacterControl : MonoBehaviour
                         boss.getHit(attackDmg + GetComponent<CastSpells>().powerBuff);
                     }
                 }
-            } 
+            }
         }
         else
         {
