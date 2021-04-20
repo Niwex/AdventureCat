@@ -11,6 +11,7 @@ public class BossAlotOfLegs : MonoBehaviour
 
     public float currentHealth;
     float HealthLastFrame;
+    bool die = false;
 
     public float attackRadius;
 
@@ -41,59 +42,64 @@ public class BossAlotOfLegs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HealthLastFrame - currentHealth != 0)
+        if (!die)
         {
-            //StartCoroutine(waitGetHit());
-        }
-        if (checkAttackRadius(topHandAttackpoint, playerTransform) || checkAttackRadius(leftHandAttackpoint, playerTransform) )//|| checkAttackRadius(rightHandAttackpoint, playerTransform))
-        {
-            if (Time.time >= nextAttackTime && !isAttack)
+            if (HealthLastFrame - currentHealth != 0)
             {
-                isAttack = true;
-                //Attack anim
-                animator.SetTrigger("attack");
-                //attack
-                StartCoroutine(AttackWait());
-                Debug.Log("Attack");
-                nextAttackTime = Time.time + 1 / attackRate;
-                
+                //StartCoroutine(waitGetHit());
+            }
+            if (checkAttackRadius(topHandAttackpoint, playerTransform) || checkAttackRadius(leftHandAttackpoint, playerTransform))//|| checkAttackRadius(rightHandAttackpoint, playerTransform))
+            {
+                if (Time.time >= nextAttackTime && !isAttack)
+                {
+                    isAttack = true;
+                    //Attack anim
+                    animator.SetTrigger("attack");
+                    //attack
+                    StartCoroutine(AttackWait());
+                    Debug.Log("Attack");
+                    nextAttackTime = Time.time + 1 / attackRate;
+
+                }
+                else
+                {
+                    //idle
+                    animator.SetTrigger("idle");
+                    //Debug.Log("wait for Attack");
+                }
+            }
+            else if (checkFollowRadius(playerTransform))
+            {
+                if (playerTransform.position.x > transform.position.x)
+                {
+                    //Follow
+                    animator.SetTrigger("move");
+                    MoveToPlayer(playerTransform);
+                    transform.localScale = new Vector3(2, 2, 1);
+                    //Debug.Log("Move");
+                }
+                else
+                {
+                    animator.SetTrigger("move");
+                    MoveToPlayer(playerTransform);
+                    transform.localScale = new Vector3(-2, 2, 1);
+                }
             }
             else
             {
                 //idle
                 animator.SetTrigger("idle");
-                //Debug.Log("wait for Attack");
+                //Debug.Log("Idle");
             }
-        }
-        else if (checkFollowRadius(playerTransform))
-        {
-            if (playerTransform.position.x > transform.position.x)
+            if (currentHealth <= 0)
             {
-                //Follow
-                animator.SetTrigger("move");
-                MoveToPlayer(playerTransform);
-                transform.localScale = new Vector3(2, 2, 1);
-                //Debug.Log("Move");
+                die = true;
+                animator.SetTrigger("die");
+                GetComponent<Rigidbody2D>().isKinematic = true;
+                Die();
             }
-            else
-            {
-                animator.SetTrigger("move");
-                MoveToPlayer(playerTransform);
-                transform.localScale = new Vector3(-2, 2, 1);
-            }
+            HealthLastFrame = currentHealth;
         }
-        else
-        {
-            //idle
-            animator.SetTrigger("idle");
-            //Debug.Log("Idle");
-        }
-        if (currentHealth<= 0)
-        {
-            animator.SetTrigger("die");
-            Die();
-        }
-        HealthLastFrame = currentHealth;
     }
     public void Attack(CharacterControl player)
     {
@@ -136,7 +142,7 @@ public class BossAlotOfLegs : MonoBehaviour
     }
     IEnumerator DieWait()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
 
         Destroy(gameObject);
     }
