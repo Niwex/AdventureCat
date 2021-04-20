@@ -44,6 +44,8 @@ public abstract class MonstersScript : MonoBehaviour
     public void Die()
     {
         GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().angularVelocity = 0f;
         GetComponent<Rigidbody2D>().isKinematic = true;
         StartCoroutine(DieWait());
     }
