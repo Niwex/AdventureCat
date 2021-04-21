@@ -17,9 +17,12 @@ public class CastSpells : MonoBehaviour
     public float currentMana;
     public float manaRegen;
     float manaRegenTick = 0f;
+    public int fireBallCost = 50;
     public float powerBuff = 50f;
+    public int powerBuffManaCost = 20;
     public float powerBuffTime = 10f;
     public float healingAmount = 4f;
+    public int healingManaCost = 10;
     public float healingTick = 0f;
     public int healingTime = 10;
     int healingCount;
@@ -33,13 +36,13 @@ public class CastSpells : MonoBehaviour
     void Start()
 
     {
-        spellCost.Add("fire", 50);
+        spellCost.Add("fire", fireBallCost);
         actions.Add("fire", FireAttack);
 
-        spellCost.Add("heal", 10);
+        spellCost.Add("heal", healingManaCost);
         actions.Add("heal", Healing);
 
-        spellCost.Add("power", 20);
+        spellCost.Add("power", powerBuffManaCost);
         actions.Add("power", PowerBuff);
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray(), ConfidenceLevel.Low);
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
@@ -104,15 +107,34 @@ public class CastSpells : MonoBehaviour
             gameObject.transform.Find("waterball(Clone)").transform.Translate(Time.deltaTime * 5f, Time.deltaTime * 5f, Time.deltaTime);
             gameObject.transform.Find("waterball(Clone)").transform.Rotate(0, 0, Time.deltaTime * 500f);
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            WaterAttack();
-        }
+        // if (Input.GetKeyDown(KeyCode.Mouse1))
+        // {
+        //     WaterAttack();
+        // }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            FireAttack();
-            // int piMultiplier = 1;
-
+            if (fireBallCost <= currentMana)
+            {
+                FireAttack();
+                currentMana-=fireBallCost;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (healingManaCost <= currentMana)
+            {
+                Healing();
+                currentMana-=healingManaCost;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (powerBuffManaCost <= currentMana)
+            {
+                PowerBuff();
+                currentMana-=powerBuffManaCost;
+                // int piMultiplier = 1;
+            }
         }
         if (Time.time > manaRegenTick)
         {
