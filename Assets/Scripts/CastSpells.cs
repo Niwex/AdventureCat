@@ -111,31 +111,31 @@ public class CastSpells : MonoBehaviour
         // {
         //     WaterAttack();
         // }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (fireBallCost <= currentMana)
-            {
-                FireAttack();
-                currentMana-=fireBallCost;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if (healingManaCost <= currentMana)
-            {
-                Healing();
-                currentMana-=healingManaCost;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (powerBuffManaCost <= currentMana)
-            {
-                PowerBuff();
-                currentMana-=powerBuffManaCost;
-                // int piMultiplier = 1;
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.Tab))
+        // {
+        //     if (fireBallCost <= currentMana)
+        //     {
+        //         FireAttack();
+        //         currentMana-=fireBallCost;
+        //     }
+        // }
+        // if (Input.GetKeyDown(KeyCode.Z))
+        // {
+        //     if (healingManaCost <= currentMana)
+        //     {
+        //         Healing();
+        //         currentMana-=healingManaCost;
+        //     }
+        // }
+        // if (Input.GetKeyDown(KeyCode.X))
+        // {
+        //     if (powerBuffManaCost <= currentMana)
+        //     {
+        //         PowerBuff();
+        //         currentMana-=powerBuffManaCost;
+        //         // int piMultiplier = 1;
+        //     }
+        // }
         if (Time.time > manaRegenTick)
         {
             if (currentMana < maxMana)

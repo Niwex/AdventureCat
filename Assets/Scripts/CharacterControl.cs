@@ -40,13 +40,13 @@ public class CharacterControl : MonoBehaviour
     {
         if (!dead)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if(!invincable)
-                    invincable = true;
-                else 
-                    invincable = false;
-            }
+            // if (Input.GetKeyDown(KeyCode.R))
+            // {
+            //     if(!invincable)
+            //         invincable = true;
+            //     else 
+            //         invincable = false;
+            // }
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
             Vector2 move = new Vector2(horizontal, vertical);
